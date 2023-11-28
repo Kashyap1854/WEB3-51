@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap" rel="stylesheet">
     <title>"MedVault"</title>
 </head>
 
@@ -18,9 +21,11 @@
             <a><span>Med</span>Vault</a>
         </div>
         <div class="nav-items">
-            <a href="#">HOME</a>
+            <a href="#" class="active">HOME</a>
             <a href="#">ABOUT US</a>
             <a href="#">CONTACT US</a>
+            <a href="../login/login.html"><button class="lg-btn">SAVE IT</button></a>
+            
         </div>
        
     </div>
@@ -28,16 +33,79 @@
 <div class="curve"></div>
 <div class="home-content">
     <h3>Welcome To</h3>
-    <h1>"<span>Med</span>Vault"</h1>
+    <h1 id="text">"<span>Med</span>Vault"</h1>
     <h2>"Your Health, Your Vault: Confidential Medical Report Storage"</h2>
     <a href="../login/login.html"><button class="lg-btn">SAVE IT</button></a>
     <div class="imgbg">
         <img src="3894058.jpeg" class="img">
       </div>
-    
+      <i class='bx bxs-chevron-down'></i>
     
     
 </div>
+<div class="login-page">
+    
+        <div class="wrapper">
+
+            <div class="form-box-login">
+                <h2 class="login-head">LOGIN</h2>
+                <form action="#">
+                    <div class="input-login">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" id="Email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-login">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" id="Password" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-box">
+                        <label><input type="checkbox">Remember Me</label>
+                        <a class="link" href="#">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn" id="Login">LOGIN</button>
+                    <div class="register">
+                        <p>Don't have an account?<a class="register-link" href="#"> REGISTER</a></p>
+                    </div>
+                </form>
+            </div>
+            <div class="form-box-register">
+                <h2 class="login-head">REGISTRATION</h2>
+                <form action="#">
+                    <div class="input-login">
+                        <span class="icon"><ion-icon name="person"></ion-icon></span>
+                        <input type="text" id="Username" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-login">
+                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                        <input type="email" id="RegEmail" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-login">
+                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                        <input type="password" id="RegPassword" required>
+                        <label>Password</label>
+                    </div>
+                    <div class="remember-box">
+                        <label><input type="checkbox">I agree to the Terms & Conditions</label>
+                    </div>
+                    <button type="submit" class="btn" id="Register">REGISTER</button>
+                    <div class="login">
+                        <p>Already have an account?<a class="login-link" href="#"> LOGIN</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+
+</div>
+
 
 </body>
 
