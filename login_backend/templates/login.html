@@ -2,20 +2,94 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='styles/login.css')}}"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>MedVault|LOGIN</title>
   </head>
+
   <body>
-    <h2>Login</h2>
-    <form method="post" action="{{ url_for('login') }}">
-      <label for="username">Username:</label>
-      <input type="text" name="username" required /><br />
+    <a href="{{url_for('home')}}"
+      ><i class="bx bx-arrow-back" style="color: #000000"></i
+    ></a>
+    <div class="curve"></div>
+    <div class="imgbg">
+      <img
+        src="{{url_for('static', filename='styles/3894058.jpeg')}}"
+        class="img"
+      />
+    </div>
 
-      <label for="password">Password:</label>
-      <input type="password" name="password" required /><br />
-
-      <button type="submit">Login</button>
-    </form>
+    <div class="backdrop">
+      <div class="wrapper">
+        <div class="form-box-login">
+          <h2 class="login-head">LOGIN</h2>
+          <form action="#">
+            <div class="input-login">
+              <span class="icon"><ion-icon name="mail"></ion-icon></span>
+              <input type="email" id="Email" required />
+              <label>Email</label>
+            </div>
+            <div class="input-login">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" id="Password" required />
+              <label>Password</label>
+            </div>
+            <div class="remember-box">
+              <label><input type="checkbox" />Remember Me</label>
+              <a class="link" href="#">Forgot Password?</a>
+            </div>
+            <button type="submit" class="btn" id="Login">LOGIN</button>
+            <div class="register">
+              <p>
+                Don't have an account?<a class="register-link" href="#">
+                  REGISTER</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+        <div class="form-box-register">
+          <h2 class="login-head">REGISTRATION</h2>
+          <form action="#">
+            <div class="input-login">
+              <input type="text" id="Username" required />
+              <label>Username</label>
+            </div>
+            <div class="input-login">
+              <span class="icon"><ion-icon name="mail"></ion-icon></span>
+              <input type="email" id="RegEmail" required />
+              <label>Email</label>
+            </div>
+            <div class="input-login">
+              <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+              <input type="password" id="RegPassword" required />
+              <label>Password</label>
+            </div>
+            <div class="remember-box">
+              <label
+                ><input type="checkbox"  required/>I agree to the Terms &
+                Conditions</label
+              >
+            </div>
+            <button type="submit" class="btn" id="Register">REGISTER</button>
+            <div class="login">
+              <p>
+                Already have an account?<a class="login-link" href="#">
+                  LOGIN</a
+                >
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="{{url_for('static', filename='scripts/login.js')}}"></script>
   </body>
 </html>
