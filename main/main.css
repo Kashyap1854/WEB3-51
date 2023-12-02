@@ -29,7 +29,7 @@ body {
   transition: all 0.5s ease-in-out;
 }
 .sidebar.active {
-  width: 240px;
+  width: 210px;
 }
 .sidebar .content .logo{
   display: flex;
@@ -201,3 +201,32 @@ border-radius: 6px;
 .sidebar.active ul li .badge {
   display: none;
 }
+/*home items*/
+.upload-btn {
+  position: absolute;
+  height: 500px;
+  top: 200px;
+  left:120px;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+.upload-btn input[type="file"] {
+  display: none;
+ 
+}
+
+.upload-btn label {
+  display: inline-block;
+  padding: 10px 20px;
+  color:black;
+  border: 1px dashed #000000;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.upload-btn label:hover {
+  color: #274393;
+  border: 1px dashed #274393 ;
+  transition: 0.3s ease;
+}
+

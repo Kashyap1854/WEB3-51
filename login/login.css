@@ -157,7 +157,13 @@ body {
 .btn {
   width: 100%;
   height: 45px;
-  background: rgba(41, 41, 203, 0.877);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(27, 27, 94, 1) 39%,
+    rgba(29, 89, 161, 1) 100%
+  );
   border: none;
   outline: none;
   border-radius: 6px;
@@ -206,7 +212,13 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(41, 41, 203, 0.877);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(27, 27, 94, 1) 39%,
+    rgba(29, 89, 161, 1) 100%
+  );
   clip-path: circle(580px at right 800px);
 }
 .imgbg {
