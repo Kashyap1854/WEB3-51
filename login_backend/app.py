@@ -1,11 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for, session
-from db import users as users_collection
+from db import users as users_collection  # importing database variables.
 import secrets
 from werkzeug.security import generate_password_hash, check_password_hash
 
+# intializing a flask app.
 app = Flask(__name__)
+# assingning a secret key to the flask app.
 app.secret_key = secrets.token_hex(16)
-# Home route
 
 
 # Home route+
