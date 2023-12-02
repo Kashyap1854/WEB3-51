@@ -13,8 +13,9 @@ body {
   min-height: 100vh;
   
   background-size: cover;
-  background:white
+  background:white;
   background-position: center;
+  background-repeat: no-repeat;
 }
 .wrapper {
   position: relative;
