@@ -1,11 +1,11 @@
 
-  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@200&family=Raleway:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@100&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Roboto', sans-serif;
   
 }
 body {
@@ -34,19 +34,18 @@ body {
   text-decoration: none;
   color: rgb(0, 0, 0);
  pointer-events: none;
+
  font-weight: 900;
-  font-family: "Barlow", sans-serif;
-  margin-left: 20px;
   margin-top: 10px;
   margin-bottom: 10px;
   cursor: pointer;
 
 }
 .logo-heading span {
- color:  rgba(41, 41, 203, 0.877);
+ color:#143fb8
 }
 .nav-items a {
-  font-weight:600;
+  font-weight:1000;
   margin:0 10px;
   cursor: pointer;
   padding: 6px 15px;
@@ -56,8 +55,7 @@ body {
   transition: color 0.3s ease-in-out; 
 }
 .nav-items a:hover,.nav-items a.active{
-background: rgba(41, 41, 203, 0.877);
-color: white;
+color:#143fb8
 }
 
 .home-content h1 {
@@ -120,7 +118,8 @@ color: white;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(41, 41, 203, 0.877);
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(27,27,94,1) 39%, rgba(12,117,241,1) 100%);
   clip-path: circle(580px at right 800px);
 }
 .imgbg {
@@ -129,7 +128,7 @@ color: white;
   top:150px;
   padding-bottom: px;
   bottom: 10px;
-  height: 580px;
+  height: 600px;
   z-index: 1;
 }
 bx bxs-chevron-down {
