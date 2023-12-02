@@ -24,7 +24,6 @@ body {
     rgba(29, 89, 161, 1) 100%
   );
   padding: 30px 14px;
-
   z-index: 100;
   transition: all 0.5s ease-in-out;
 }
@@ -44,13 +43,14 @@ body {
 }
 .sidebar.active .content .logo{
   opacity: 1;
+  top: 0;
   font-size: 20px;
 }
 .sidebar #btn {
   position: absolute;
   top: 20px;
-  left: 50%;
-  font-size: 30px;
+  left: 45%;
+  font-size: 40px;
   transform: translate(-50%);
   width: 50px;
   height: 50px;
@@ -62,7 +62,10 @@ body {
 }
 .sidebar.active #btn {
   left: 90%;
-  font: size 40px;
+  top: 0px;
+  transition-delay: .1s;
+  font: size 30px;
+  
 }
 .sidebar ul {
   margin-top: 20px;
@@ -80,7 +83,7 @@ body {
 .sidebar ul li input {
   position: absolute;
   top: 0;
-  left: 0;
+  left:0px;
   width: 100%;
   height: 100%;
   cursor: pointer;
@@ -88,17 +91,19 @@ body {
   background: transparent;
   border: none;
   outline: none;
+  opacity: 0;
   padding-left: 50px;
   color: white;
 }
 .sidebar.active ul li input {
   padding: 0 20px 0 50px;
+  opacity: 1;
 }
 .sidebar ul li .bx-search {
   position: absolute;
   top: 50%;
   color: white;
-  left: 10px;
+  left: 0px;
   transform: translateY(-50%);
   font-size: 22px;
   z-index: 99;
@@ -111,24 +116,44 @@ body {
   align-items: center;
   font-weight: 400;
   height: 100%;
-
+white-space: nowrap;
   width: 100%;
   line-height: 50px;
   border-radius: 6px;
   text-decoration: none;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease;
 }
 .sidebar ul li a:hover {
-  background: rgba(0, 0, 0, 0.1);
-  
+  background: rgb(255, 255, 255);
+  color: #274393;
+  transition-delay: .1s;
   font-weight: 900;
 }
-.sidebar ul li .link-name {
+.sidebar ul li i{
+  height: 50px;
+  min-width: 50px;
+  margin-left: 5px;
+  font-size: 25px;
+  text-align: center;
+  align-items: center;
+  line-height: 50px;
+  border-radius: 6px;
+}
+.sidebar.active ul li i{
   font-size: 20px;
-  font-weight: 400;
-  margin-left: 12px;
-  white-space: nowrap;
-  pointer-events: none;
+  margin-right: 15px;
+}
+.sidebar ul li .link-name {
+  opacity: 0;
+pointer-events: none;
+transition: opacity 0.5s ease-in-out;
+  
+}
+.sidebar.active ul li .link-name {
+opacity: 1;
+transition-delay: .2s;
+  pointer-events: auto;
+
 }
 
 .sidebar .list-logout {
@@ -136,7 +161,9 @@ body {
   bottom: 20px;
   margin: 15px 0;
   width: 100%;
+  white-space: nowrap;
   height: 50px;
+  padding-right: 30px;
   border-radius: 6px;
   transition: all 0.3s ease-in-out;
 }
