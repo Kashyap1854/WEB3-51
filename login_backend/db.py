@@ -1,7 +1,10 @@
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+import os
+from dotenv import load_dotenv
 
-uri = "mongodb+srv://VIki:6mzMzlfuccCRi8kl@medvault.n0buiny.mongodb.net/?retryWrites=true&w=majority"
+load_dotenv()
+uri = os.environ.get('Mongo_URI')  # accessing uri from .env variable
 
 
 # Create a new client and connect to the server
@@ -14,7 +17,7 @@ try:
 except Exception as e:
     print(e)
 
-# Use database.
+# Create or use database MEDVault.
 db = cluster.MEDVault
-# Use collection
+# Use or create collection clients.
 users = db.clients
