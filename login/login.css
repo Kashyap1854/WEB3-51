@@ -187,7 +187,7 @@ body {
 }
 .wrapper.active .form-box-register {
   transition: transform 0.18s ease;
-  transform: translate(1);
+  transform: translate(0);
 }
 .form-box-register h2 {
   font-size: 2em;
