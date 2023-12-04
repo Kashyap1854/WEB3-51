@@ -103,7 +103,8 @@ color:#143fb8
   font-size: 20px;
   color: white;
   cursor: pointer;
-  background-color: rgba(41, 41, 203, 0.877);
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(27,27,94,1) 39%, rgba(12,117,241,1) 100%);
   box-shadow: 10px 10px 10px black;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
