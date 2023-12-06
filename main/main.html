@@ -12,11 +12,9 @@
     <div class="logo-heading">
       <p><span>Med</span>Vault</p>
   </div>
-  <div class="upload-btn">
-    <input type="file" name="file" id="file" class="inputfile" />
 
-    <label for="file">Upload File</label>
-  </div>
+</div>
+
     <div class="sidebar">
       <div class="content">
         <div class="logo">
@@ -79,6 +77,24 @@
               <span class="badge">Log Out</span>
             </a>
           </li>
+    </div>
+
+    <div class="container">
+      <div class="wrapper">
+        <div class="image">
+          <!---<img src="../3894051.jpeg">-->
+          <div class="file-upload">
+            <div class="icon"><i class='bx bxs-cloud-upload'></i></div>
+            <div class="text">No file chosen,yet!</div>
+          </div>
+          <div id="cancel-btn"><i class='bx bx-x'></i></div>
+          <div class="filename">File name here</div>
+        </div>
+        
+      </div>
+      <input id="file" type="file" hidden>
+      <button id="upload-btn">Choose a File</button>
+      
     </div>
     
     <script src="main.js"></script>

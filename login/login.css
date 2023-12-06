@@ -130,13 +130,14 @@ body {
   justify-content: space-between;
 }
 .patient-box{
-  display: flex;
 
+  display: flex;
+  justify-content: space-between;
   font-size: 0.9em;
   color: rgb(0, 0, 0);
   font-weight: 500;
   margin: -15px 0 15px;
-  display: flex;
+
   justify-content: space-between;
   position: relative;
   width: 100%;
@@ -220,6 +221,9 @@ body {
   cursor: pointer;
   line-height: 50px;
   text-align: center;
+}
+.bx-arrow-back:hover {
+  color: rgba(41, 41, 203, 0.877);
 }
 .curve {
   position:fixed;

@@ -10,6 +10,7 @@
 body {
   min-height: 100vh;
   background-color: white;
+ 
 }
 .sidebar {
   position: fixed;
@@ -27,6 +28,7 @@ body {
   padding: 30px 14px;
   z-index: 100;
   transition: all 0.5s ease-in-out;
+ /* opacity: 0;*/
 }
 .sidebar.active {
   width: 210px;
@@ -41,6 +43,7 @@ body {
     margin-bottom:10px;
   transition: 0.5s ease;
   opacity: 0;
+
 }
 .sidebar.active .content .logo{
   opacity: 1;
@@ -229,4 +232,60 @@ border-radius: 6px;
   border: 1px dashed #274393 ;
   transition: 0.3s ease;
 }
+.container{
+  position: absolute;
+  margin-left: 120px;
+  height: 500px;
+ top: 200px;
+ align-items: center;
+ justify-content: center;
+ place-items: center;
+width: 100%;
+  display: grid;
+  text-align: center;
+}
+.container .wrapper{
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border: 2px dashed #274393;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  place-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.wrapper .image{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  
+}
+.wrapper .image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.wrapper .icon{
+  font-size: 100px;
+  color:rgba(29, 89, 161, 1);
+  
 
+
+}
+.wrapper .text{
+  font-size: 20px;
+  color: #274393;
+  font-weight: 500;
+
+}
+.wrapper #cancel-btn{
+  position: absolute;
+}
+.wrapper .filename{
+  position: absolute;
+}

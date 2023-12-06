@@ -62,9 +62,33 @@
               <label>Email</label>
             </div>
             <div class="patient-box">
-                <label><input type="checkbox" />Patient</label>
-                <label><input type="checkbox"/>Health Representative</label>
-              </div>
+              <label
+                ><input type="checkbox" name="checkboxGroup" />Patient</label
+              >
+              <label
+                ><input type="checkbox" name="checkboxGroup" />Health
+                Representative</label
+              >
+            </div>
+
+            <script id="checkbox">
+              document.addEventListener("DOMContentLoaded", function () {
+                var checkboxes = document.querySelectorAll(
+                  '.patient-box input[type="checkbox"]'
+                );
+
+                checkboxes.forEach(function (checkbox) {
+                  checkbox.addEventListener("change", function () {
+                    checkboxes.forEach(function (otherCheckbox) {
+                      if (otherCheckbox !== checkbox) {
+                        otherCheckbox.checked = false;
+                      }
+                    });
+                  });
+                });
+              });
+            </script>
+
             <div class="input-login">
               <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
               <input type="password" id="RegPassword" required />
