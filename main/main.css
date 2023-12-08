@@ -5,13 +5,15 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-     
+  overflow-x: hidden;
+  overflow: hidden;
 }
+
 body {
   min-height: 100vh;
   background-color: white;
- 
 }
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -28,29 +30,31 @@ body {
   padding: 30px 14px;
   z-index: 100;
   transition: all 0.5s ease-in-out;
- /* opacity: 0;*/
 }
+
 .sidebar.active {
   width: 210px;
 }
-.sidebar .content .logo{
+
+.sidebar .content .logo {
   display: flex;
   align-items: center;
   color: white;
   width: 100%;
   pointer-events: none;
   height: 50px;
-    margin-bottom:10px;
+  margin-bottom: 10px;
   transition: 0.5s ease;
   opacity: 0;
-
 }
-.sidebar.active .content .logo{
+
+.sidebar.active .content .logo {
   opacity: 1;
   top: 0;
   left: 0;
   font-size: 20px;
 }
+
 .sidebar #btn {
   position: absolute;
   top: 20px;
@@ -65,16 +69,18 @@ body {
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
+
 .sidebar.active #btn {
   left: 90%;
   top: 0px;
-  transition-delay: .1s;
-  font: size 30px;
-  
+  transition-delay: 0.1s;
+  font-size: 30px;
 }
+
 .sidebar ul {
   margin-top: 20px;
 }
+
 .sidebar ul li {
   position: relative;
   list-style: none;
@@ -85,14 +91,15 @@ body {
   border-radius: 15px;
   transition: all 0.3s ease-in-out;
 }
+
 .sidebar ul li input {
   position: absolute;
   top: 0;
-  left:0px;
+  left: 0px;
   width: 100%;
   height: 100%;
   cursor: pointer;
-  border: radius 6px;
+  border-radius: 6px;
   background: transparent;
   border: none;
   outline: none;
@@ -100,10 +107,12 @@ body {
   padding-left: 50px;
   color: white;
 }
+
 .sidebar.active ul li input {
   padding: 0 20px 0 50px;
   opacity: 1;
 }
+
 .sidebar ul li .bx-search {
   position: absolute;
   top: 50%;
@@ -122,20 +131,22 @@ body {
   align-items: center;
   font-weight: 400;
   height: 100%;
-white-space: nowrap;
+  white-space: nowrap;
   width: 100%;
   line-height: 50px;
   border-radius: 6px;
   text-decoration: none;
   transition: all 0.3s ease;
 }
+
 .sidebar ul li a:hover {
   background: rgb(255, 255, 255);
   color: #274393;
-  transition-delay: .1s;
+  transition-delay: 0.1s;
   font-weight: 900;
 }
-.sidebar ul li i{
+
+.sidebar ul li i {
   height: 50px;
   min-width: 50px;
   margin-left: 5px;
@@ -145,21 +156,22 @@ white-space: nowrap;
   line-height: 50px;
   border-radius: 6px;
 }
-.sidebar.active ul li i{
+
+.sidebar.active ul li i {
   font-size: 20px;
   margin-right: 15px;
 }
+
 .sidebar ul li .link-name {
   opacity: 0;
-pointer-events: none;
-transition: opacity 0.5s ease-in-out;
-  
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
 }
-.sidebar.active ul li .link-name {
-opacity: 1;
-transition-delay: .2s;
-  pointer-events: auto;
 
+.sidebar.active ul li .link-name {
+  opacity: 1;
+  transition-delay: 0.2s;
+  pointer-events: auto;
 }
 
 .sidebar .list-logout {
@@ -173,10 +185,12 @@ transition-delay: .2s;
   border-radius: 6px;
   transition: all 0.3s ease-in-out;
 }
+
 .sidebar.active .list-logout {
   width: 100%;
   padding-right: 30px;
 }
+
 .sidebar ul li .badge {
   position: absolute;
   top: 0;
@@ -186,7 +200,7 @@ transition-delay: .2s;
   height: 35px;
   background: #274393;
   color: white;
-border-radius: 6px;
+  border-radius: 6px;
   font-size: 16px;
   line-height: 35px;
   text-align: center;
@@ -195,33 +209,35 @@ border-radius: 6px;
   opacity: 0;
   transition: 0.5s ease;
 }
+
 .sidebar ul li:hover .badge {
   opacity: 1;
-  transition: .5s ease;
+  transition: 0.5s ease;
   top: 50%;
-  
 }
+
 .sidebar.active ul li .badge {
   display: none;
 }
-/*home items*/
+
+/* home items */
 .upload-btn {
   position: absolute;
   height: 500px;
   top: 200px;
-  left:120px;
+  left: 120px;
   width: 100%;
   transition: all 0.5s ease-in-out;
 }
+
 .upload-btn input[type="file"] {
   display: none;
- 
 }
 
 .upload-btn label {
   display: inline-block;
   padding: 10px 20px;
-  color:black;
+  color: black;
   border: 1px dashed #000000;
   border-radius: 6px;
   cursor: pointer;
@@ -229,22 +245,21 @@ border-radius: 6px;
 
 .upload-btn label:hover {
   color: #274393;
-  border: 1px dashed #274393 ;
+  border: 1px dashed #274393;
   transition: 0.3s ease;
 }
-.container{
+
+.container {
   position: absolute;
   margin-left: 120px;
   height: 500px;
- top: 200px;
- align-items: center;
- justify-content: center;
- place-items: center;
-width: 100%;
-  display: grid;
+  top: 150px;
+  width: 100%;
+  display: flex;
   text-align: center;
 }
-.container .wrapper{
+
+.container .wrapper {
   position: relative;
   height: 200px;
   width: 200px;
@@ -257,9 +272,12 @@ width: 100%;
   overflow: hidden;
 }
 .wrapper .image{
+  position: absolute;
   height: 100%;
   width: 100%;
-  display: flex;
+
+    
+  align-items: center;
   justify-content: center;
   align-items: center;
  
@@ -271,6 +289,7 @@ width: 100%;
   object-fit: cover;
 }
 .wrapper .icon{
+  
   font-size: 100px;
   color:rgba(29, 89, 161, 1);
   
@@ -280,12 +299,135 @@ width: 100%;
 .wrapper .text{
   font-size: 20px;
   color: #274393;
+  margin-bottom: 40px;
   font-weight: 500;
 
 }
 .wrapper #cancel-btn{
   position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 20px;
+  color: #274393;
+  cursor: pointer;
+  display: none;
 }
 .wrapper .filename{
   position: absolute;
+  bottom: 0px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(27, 27, 94, 1) 39%,
+    rgba(29, 89, 161, 1) 100%
+  );
+  width: 100%;
+  color: white;
+  padding: 8px 0;
+  font-size: 15px;
+  display: none;
 }
+.container #upload-btn{
+  position: absolute;
+  top: 45%;
+  width: 195px;
+  left: 100px;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  color: white;
+  background:rgba(29, 89, 161, 1);
+  border: none;
+font-weight: 500;
+font-size: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  letter-spacing:1px;
+  outline: none;
+  text-transform: uppercase;
+}
+.logo-heading {
+  position: absolute;
+  font-size: 2em;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+ pointer-events: none;
+  font-family: "Montserrat", sans-serif;
+left: 120px;
+ font-weight: 900;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding-bottom:30px;
+  cursor: pointer;
+  border-bottom: #000000 2px solid;
+  width: 100%;
+  
+
+}
+.logo-heading span {
+ color:#143fb8
+}
+ body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #upload-container {
+            max-width: 600px;
+            width: 100%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #file-input {
+            display: none;
+        }
+
+        #file-label {
+            cursor: pointer;
+            display: block;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        #file-preview {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .file-item {
+            flex-basis: calc(33.33% - 10px);
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+        }
+
+        .file-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .file-name {
+            padding: 8px;
+            text-align: center;
+            background-color: #f1f1f1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }

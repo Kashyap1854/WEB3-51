@@ -4,16 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> MedVault|Home</title>
+    <title>MedVault | Home</title>
     <link rel="stylesheet" href="main.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body>
     <div class="logo-heading">
       <p><span>Med</span>Vault</p>
-  </div>
-
-</div>
+    </div>
 
     <div class="sidebar">
       <div class="content">
@@ -24,45 +22,41 @@
       </div>
         <ul class="list">
           <li class="search">
-            <span >
+            <span>
               <i class='bx bx-search'></i>
               <input type="text" placeholder="Search...">
             </span>
           </li>
           <li class="list-item active">
-            <a href="#" class="list-list ">
+            <a href="#" class="list-link">
               <i class='bx bxs-dashboard'></i>
               <span class="link-name">Dashboard</span>
             </a>
             <span class="badge">Dashboard</span>
-
           </li>
           <li class="list-item">
-            <a href="#" class="list-list">
+            <a href="#" class="list-link">
               <i class='bx bx-user'></i>
               <span class="link-name">User</span>
             </a>
             <span class="badge">User</span>
-
           </li>
           <li class="list-item">
-            <a href="#" class="list-list">
+            <a href="#" class="list-link">
               <i class='bx bx-file-blank'></i>
               <span class="link-name">New</span>
             </a>
             <span class="badge">New</span>
-
           </li>
           <li class="list-item">
-            <a href="#" class="list-list">
+            <a href="#" class="list-link">
               <i class='bx bxs-message-minus'></i>
               <span class="link-name">Contact Us</span>
             </a>
             <span class="badge">Contact Us</span>
-
           </li>
           <li class="list-item">
-            <a href="#" class="list-list">
+            <a href="#" class="list-link">
               <i class='bx bx-cog'></i>
               <span class="link-name">Settings</span>
             </a> 
@@ -70,33 +64,33 @@
           </li>
         </ul>
         <ul class="list-logout">
-          <li >
-            <a href="#" class="list-list">
+          <li>
+            <a href="#" class="list-link">
               <i class='bx bx-log-out'></i>
               <span class="link-name">Log Out</span>
               <span class="badge">Log Out</span>
             </a>
           </li>
+        </ul>
     </div>
 
     <div class="container">
       <div class="wrapper">
         <div class="image">
-          <!---<img src="../3894051.jpeg">-->
+          <img src="" alt="">
           <div class="file-upload">
             <div class="icon"><i class='bx bxs-cloud-upload'></i></div>
-            <div class="text">No file chosen,yet!</div>
+            <div class="text">No file chosen, yet!</div>
           </div>
           <div id="cancel-btn"><i class='bx bx-x'></i></div>
           <div class="filename">File name here</div>
         </div>
-        
       </div>
-      <input id="file" type="file" hidden>
-      <button id="upload-btn">Choose a File</button>
-      
+      <input id="file" type="file" accept=".docx,.doc,.pdf,.jpeg" hidden>
+      <button onclick="defaultBtnActive()" id="upload-btn">Choose a File</button>
     </div>
     
     <script src="main.js"></script>
     
   </body>
+</html>

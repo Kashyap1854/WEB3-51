@@ -249,3 +249,121 @@ body {
   height: 580px;
   z-index: 1;
 }
+.container{
+  position: absolute;
+  margin-left: 120px;
+  height: 500px;
+ top: 150px;
+width: 100%;
+display: flex;
+  text-align: center;
+}
+.container .wrapper{
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border: 2px dashed #274393;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  place-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.wrapper .image{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+    
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+ 
+  
+}
+.wrapper .image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.wrapper .icon{
+  
+  font-size: 100px;
+  color:rgba(29, 89, 161, 1);
+  
+
+
+}
+.wrapper .text{
+  font-size: 20px;
+  color: #274393;
+  margin-bottom: 40px;
+  font-weight: 500;
+
+}
+.wrapper #cancel-btn{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 20px;
+  color: #274393;
+  cursor: pointer;
+  display: none;
+}
+.wrapper .filename{
+  position: absolute;
+  bottom: 0px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(27, 27, 94, 1) 39%,
+    rgba(29, 89, 161, 1) 100%
+  );
+  width: 100%;
+  color: white;
+  padding: 8px 0;
+  font-size: 15px;
+  display: none;
+}
+.container #upload-btn{
+  position: absolute;
+  top: 45%;
+  width: 195px;
+  left: 100px;
+  transform: translate(-50%, -50%);
+  padding: 10px 20px;
+  color: white;
+  background:rgba(29, 89, 161, 1);
+  border: none;
+font-weight: 500;
+font-size: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  letter-spacing:1px;
+  outline: none;
+  text-transform: uppercase;
+}
+.logo-heading {
+  position: absolute;
+  font-size: 2em;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+ pointer-events: none;
+  font-family: "Montserrat", sans-serif;
+left: 120px;
+ font-weight: 900;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding-bottom:30px;
+  cursor: pointer;
+  border-bottom: #000000 2px solid;
+  width: 100%;
+  
+
+}
+.logo-heading span {
+ color:#143fb8
+}
