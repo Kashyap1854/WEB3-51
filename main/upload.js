@@ -5,28 +5,24 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// Set up multer for handling file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Specify the upload directory
+    cb(null, 'uploads/'); 
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname); // Use the original file name
+    cb(null, file.originalname); 
   }
 });
 
 const upload = multer({ storage: storage });
 
-// Serve the HTML form
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'main.html'));
 });
 
-// Handle file uploads
 app.post('/upload', upload.single('file'), (req, res) => {
-  const filePath = req.file.path; // This is the server-side path where the file is stored
-//   res.send(File uploaded to: ${filePath});
-// });
+  const filePath = req.file.path;
+
 
 const Moralis = require("moralis").default;
 const fs = require("fs");
