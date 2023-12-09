@@ -9,14 +9,19 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+  <div class="logo-heading">
+    <a><span>Med</span>Vault</a>
+</div>
 
   <div class="sidebar">
     <div class="content">
       <div class="logo">
           <h3>MedVault</h3>
       </div>
+
       <i class='bx bx-menu' id="btn"></i>
     </div>
+
       <ul class="list">
         <li class="search">
           <span>
@@ -24,6 +29,7 @@
             <input type="text" placeholder="Search...">
           </span>
         </li>
+
         <li class="list-item active">
           <a href="#" class="list-link">
             <i class='bx bxs-dashboard'></i>
@@ -72,6 +78,7 @@
   </div>
   <!------------------>
   <div id="upload-container">
+    
     <label id="file-label" for="file-input">Choose Files</label>
     <input type="file" id="file-input" multiple accept=".docx, .pdf, .jpeg, .doc" onchange="previewFiles()">
 

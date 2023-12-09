@@ -12,6 +12,21 @@ body {
   min-height: 100vh;
   background-color: white;
 }
+.logo-heading {
+  font-size: 2em;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+ pointer-events: none;
+margin-left:120px;
+ font-weight: 900;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+
+}
+.logo-heading span {
+ color:#143fb8
+}
 
 .sidebar {
   position: fixed;
@@ -218,28 +233,30 @@ body {
   display: none;
 }
 
-
-
 /* home items */
 
+
 #upload-container {
+  position: relative;
   max-width: 600px;
-  width: 100%;
-  background-color: #fff;
+  width: 800px;
   padding: 20px;
-  border-radius: 8px;
+  margin: 0 auto;
+  text-align: center;
+  align-items: center;
+  top:200px;
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 #file-input {
   display: none;
 }
-
 #file-label {
   cursor: pointer;
   display: block;
   padding: 10px;
-  background-color: #3498db;
+  background: #274393;
   color: #fff;
   text-align: center;
   border-radius: 5px;
@@ -263,6 +280,7 @@ body {
 
 .file-item img {
   width: 100%;
+  border: 2px dashed #274393;
   height: auto;
   display: block;
 }
@@ -270,7 +288,10 @@ body {
 .file-name {
   padding: 8px;
   text-align: center;
-  background-color: #f1f1f1;
+  background: #274393;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
