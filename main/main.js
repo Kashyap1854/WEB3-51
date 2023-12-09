@@ -23,22 +23,41 @@ listitem.forEach((item) =>
     item.onclick = activeLink);
 
 // File upload functionality
-const defaultBtn = document.querySelector("#file");
-const uploadBtn = document.querySelector("#upload-btn");
-const img = document.querySelector(".image img"); // Corrected selector for the image
+// Add or modify existing scripts as needed
 
-function defaultBtnActive() {
-    defaultBtn.click();
+function previewFiles() {
+  const previewContainer = document.getElementById('file-preview');
+  const filesInput = document.getElementById('file-input');
+  const files = filesInput.files;
+
+  previewContainer.innerHTML = ''; 
+
+  for (const file of files) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+          const fileItem = document.createElement('div');
+          fileItem.classList.add('file-item');
+
+          if (file.type.includes('image')) {
+              const img = document.createElement('img');
+              img.src = e.target.result;
+              fileItem.appendChild(img);
+          } else {
+              const defaultImageSrc = 'https://via.placeholder.com/150';
+              const img = document.createElement('img');
+              img.src = defaultImageSrc;
+              fileItem.appendChild(img);
+          }
+
+          const fileName = document.createElement('div');
+          fileName.classList.add('file-name');
+          fileName.textContent = file.name;
+
+          fileItem.appendChild(fileName);
+          previewContainer.appendChild(fileItem);
+      };
+
+      reader.readAsDataURL(file);
+  }
 }
-
-defaultBtn.addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function () {
-            const result = reader.result;
-            img.src = result;
-        }
-        reader.readAsDataURL(file);
-    }
-});
