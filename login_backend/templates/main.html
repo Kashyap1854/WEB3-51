@@ -75,7 +75,13 @@
       <ul class="list-logout">
         <li>
           <a href="#" class="list-link">
-            <i class="bx bx-log-out"></i>
+            <form
+              action="{{url_for('logout')}}"
+              method="post"
+              onSubmit="if(!confirm('Do you want to log out .')){return false;}"
+            >
+              <i class="bx bx-log-out"><input type="submit" /></i>
+            </form>
             <span class="link-name">Log Out</span>
             <span class="badge">Log Out</span>
           </a>

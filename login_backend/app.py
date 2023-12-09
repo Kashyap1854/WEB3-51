@@ -73,5 +73,12 @@ def dashboard():
     return render_template('main.html')
 
 
+@app.route("/logout", methods=["GET", "POST"])
+def logout():
+    if request.method == "POST":
+        session.clear()
+        return render_template('home.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
