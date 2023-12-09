@@ -79,11 +79,12 @@
   <!------------------>
   <div class="upload-container">
     <div class="wrapper">
-     
+      <form action="/upload" method="post" enctype="multipart/form-data">
     <label id="file-label" for="file-input">Choose Files</label>
     <input type="file" id="file-input" multiple accept=".docx, .pdf, .jpeg, .doc" onchange="previewFiles()">
-
+    
     <div id="file-preview"></div>
+    </form>
   </div>
 </div>
   <script src="main.js"></script>

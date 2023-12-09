@@ -30,7 +30,7 @@ function previewFiles() {
   const filesInput = document.getElementById('file-input');
   const files = filesInput.files;
 
-  previewContainer.innerHTML = ''; // Clear previous previews
+  previewContainer.innerHTML = ''; 
 
   for (const file of files) {
       const reader = new FileReader();
