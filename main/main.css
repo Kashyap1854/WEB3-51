@@ -11,9 +11,14 @@ body {
   min-height: 100vh;
   background-color: white;
   font-family: "Roboto", sans-serif;
+  background:url("../917017949818ccfe4475e5f7f65979b6.jpg") no-repeat;
+  backdrop-filter: blur(2px);
 
+  background-size: cover;
+  background-position: center;
 }
 .logo-heading {
+  position: fixed;
   font-size: 2em;
   text-decoration: none;
   color: rgb(0, 0, 0);
@@ -23,7 +28,7 @@ body {
  "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 margin-left:120px;
  font-weight: 900;
-  margin-top: 10px;
+  margin-top: 45px;
   margin-bottom: 10px;
   cursor: pointer;
 
@@ -245,16 +250,19 @@ margin-left:120px;
 
 .upload-container {
   position: relative;
-  max-width: 600px;
-  width: 800px;
+  max-width: 5000px;
+  width: 1000px;
+ padding: 20px; 
   padding: 20px;
   margin: 0 auto;
   text-align: center;
   align-items: center;
-  top:200px;
+  top:100px;
+  background: #fff;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+  box-shadow: 10px 20px  20px rgba(0, 0, 0, 0.963);
+
+  }
 
 #file-input {
   display: none;
@@ -267,29 +275,29 @@ margin-left:120px;
   color: #fff;
   text-align: center;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin-top: 30px;
 }
 
 #file-preview {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
+      overflow-x: auto; 
+      white-space: nowrap; 
+      max-height: 200px; 
 }
 
 .file-item {
-  flex-basis: calc(33.33% - 10px);
-  position: relative;
-  overflow: hidden;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-  box-sizing: border-box;
+  
+  
+  margin-right: 10px;
+ 
 }
 
 .file-item img {
-  width: 100%;
+  max-width: 100px;
+  max-height: 100px;
   border: 2px dashed #274393;
-  height: auto;
-  display: block;
+  display: block; 
+  margin-bottom: 5px; 
 }
 
 .file-name {
@@ -297,9 +305,31 @@ margin-left:120px;
   text-align: center;
   background: #274393;
   color: white;
+  width: 100%;
   text-transform: uppercase;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.wrap{
+  border: 2px dashed #274393;
+  width: 100%;
+  height:120px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  text-align: center  ;
+ 
+}
+.wrap .icon{
+  font-size: 80px;
+  color: #274393;
+  margin-bottom: -20px;
+}
+.wrap .text{
+  font-size: 20px;
+  color: #274393;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }

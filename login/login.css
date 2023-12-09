@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-   font-family: Oswald, sans-serif;
+  font-family: Oswald, sans-serif;
   font-family: Poppins, sans-serif;
 }
 body {
@@ -11,25 +11,26 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  
+  background: url("../917017949818ccfe4475e5f7f65979b6.jpg") no-repeat;
   background-size: cover;
-  background:white;
+  overflow: hidden;
   background-position: center;
   background-repeat: no-repeat;
 }
 .wrapper {
   position: relative;
   width: 420px;
-  right: 300px;
+  right: 250px;
   height: 500px;
-  background: rgba(255, 255, 255, 0.938);
-  backdrop-filter: blur(100px);
-  box-shadow: 10px 20px  20px rgba(0, 0, 0, 0.963);
+
+  backdrop-filter: blur(25px);
+  box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.963);
   display: flex;
   justify-content: center;
   align-items: center;
   color: rgb(0, 0, 0);
   overflow: hidden;
+  border-radius: 15px;
   transform: scale(1);
   transition: transform 0.5s, height 0.2s ease;
 }
@@ -95,9 +96,9 @@ body {
 .input-login input {
   width: 100%;
   height: 100%;
-  background:none;
+  background: none;
   border: none;
-  border-radius:2px;
+  border-radius: 2px;
   text-decoration: none;
   outline: none;
   color: rgb(0, 0, 0);
@@ -107,7 +108,7 @@ body {
 .input-login label {
   width: 100%;
   height: 100%;
-  background:none;
+  background: none;
   border: none;
   outline: none;
   color: rgb(0, 0, 0);
@@ -129,8 +130,7 @@ body {
   display: flex;
   justify-content: space-between;
 }
-.patient-box{
-
+.patient-box {
   display: flex;
   justify-content: space-between;
   font-size: 0.9em;
@@ -154,14 +154,14 @@ body {
 }
 .login-link {
   text-decoration: none;
-  color: rgba(41, 41, 203, 0.877)
+  color: rgba(41, 41, 203, 0.877);
 }
 .login-link:hover {
   text-decoration: underline;
 }
 .register-link {
   text-decoration: none;
-  color:rgba(41, 41, 203, 0.877);
+  color: rgba(41, 41, 203, 0.877);
 }
 .register-link:hover {
   text-decoration: underline;
@@ -185,7 +185,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
   font-size: 1em;
-  color:white;
+  color: white;
   font-weight: bolder;
 }
 .register {
@@ -214,7 +214,7 @@ body {
   position: absolute;
   color: rgb(0, 0, 0);
   font-size: 30px;
-  top: 20px;
+  top: 65px;
   left: 3%;
   width: 50px;
   height: 50px;
@@ -226,7 +226,7 @@ body {
   color: rgba(41, 41, 203, 0.877);
 }
 .curve {
-  position:fixed;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -241,24 +241,24 @@ body {
   clip-path: circle(580px at right 800px);
 }
 .imgbg {
-  position:fixed;
+  position: fixed;
   left: 700px;
-  top:150px;
+  top: 150px;
   padding-bottom: px;
   bottom: 10px;
   height: 580px;
   z-index: 1;
 }
-.container{
+.container {
   position: absolute;
   margin-left: 120px;
   height: 500px;
- top: 150px;
-width: 100%;
-display: flex;
+  top: 150px;
+  width: 100%;
+  display: flex;
   text-align: center;
 }
-.container .wrapper{
+.container .wrapper {
   position: relative;
   height: 200px;
   width: 200px;
@@ -270,39 +270,32 @@ display: flex;
   align-items: center;
   overflow: hidden;
 }
-.wrapper .image{
+.wrapper .image {
   position: absolute;
   height: 100%;
   width: 100%;
   display: flex;
-    
+
   align-items: center;
   justify-content: center;
   align-items: center;
- 
-  
 }
-.wrapper .image img{
+.wrapper .image img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
-.wrapper .icon{
-  
+.wrapper .icon {
   font-size: 100px;
-  color:rgba(29, 89, 161, 1);
-  
-
-
+  color: rgba(29, 89, 161, 1);
 }
-.wrapper .text{
+.wrapper .text {
   font-size: 20px;
   color: #274393;
   margin-bottom: 40px;
   font-weight: 500;
-
 }
-.wrapper #cancel-btn{
+.wrapper #cancel-btn {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -311,7 +304,7 @@ display: flex;
   cursor: pointer;
   display: none;
 }
-.wrapper .filename{
+.wrapper .filename {
   position: absolute;
   bottom: 0px;
   background: rgb(2, 0, 36);
@@ -327,7 +320,7 @@ display: flex;
   font-size: 15px;
   display: none;
 }
-.container #upload-btn{
+.container #upload-btn {
   position: absolute;
   top: 45%;
   width: 195px;
@@ -335,14 +328,14 @@ display: flex;
   transform: translate(-50%, -50%);
   padding: 10px 20px;
   color: white;
-  background:rgba(29, 89, 161, 1);
+  background: rgba(29, 89, 161, 1);
   border: none;
-font-weight: 500;
-font-size: 15px;
+  font-weight: 500;
+  font-size: 15px;
   border-radius: 25px;
   cursor: pointer;
   transition: 0.3s ease;
-  letter-spacing:1px;
+  letter-spacing: 1px;
   outline: none;
   text-transform: uppercase;
 }
@@ -351,19 +344,17 @@ font-size: 15px;
   font-size: 2em;
   text-decoration: none;
   color: rgb(0, 0, 0);
- pointer-events: none;
+  pointer-events: none;
   font-family: "Montserrat", sans-serif;
-left: 120px;
- font-weight: 900;
+  left: 120px;
+  font-weight: 900;
   margin-top: 10px;
   margin-bottom: 10px;
-  padding-bottom:30px;
+  padding-bottom: 30px;
   cursor: pointer;
   border-bottom: #000000 2px solid;
   width: 100%;
-  
-
 }
 .logo-heading span {
- color:#143fb8
+  color: #143fb8;
 }
