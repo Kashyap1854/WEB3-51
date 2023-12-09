@@ -236,7 +236,7 @@ margin-left:120px;
 /* home items */
 
 
-#upload-container {
+.upload-container {
   position: relative;
   max-width: 600px;
   width: 800px;
