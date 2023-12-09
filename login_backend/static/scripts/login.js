@@ -19,20 +19,4 @@ iconclose.addEventListener("click", () => {
   wrapper.classList.remove("active-popup");
 });
 
-// JavaScript code to handle the button click event
-document.getElementById("linkButton").addEventListener("click", function () {
-  window.location.href = "features.html";
-});
-
-/**
- *
- */
-document.getElementById("Login").addEventListener("click", () => {
-  console.log("Successfully logged in");
-  alert("Logged in successfully");
-});
-
-document.getElementById("Register").addEventListener("click", () => {
-  console.log("Successfully registered");
-  alert("Registered successfully");
-});
+// Path: WEB3-51/login/login.js
