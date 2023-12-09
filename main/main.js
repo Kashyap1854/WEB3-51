@@ -26,38 +26,38 @@ listitem.forEach((item) =>
 // Add or modify existing scripts as needed
 
 function previewFiles() {
-  const previewContainer = document.getElementById('file-preview');
-  const filesInput = document.getElementById('file-input');
-  const files = filesInput.files;
+    const previewContainer = document.getElementById('file-preview');
+    const filesInput = document.getElementById('file-input');
+    const files = filesInput.files;
 
-  previewContainer.innerHTML = ''; 
+    previewContainer.innerHTML = '';
 
-  for (const file of files) {
+    for (const file of files) {
       const reader = new FileReader();
 
       reader.onload = function (e) {
-          const fileItem = document.createElement('div');
-          fileItem.classList.add('file-item');
+        const fileItem = document.createElement('div');
+        fileItem.classList.add('file-item');
 
-          if (file.type.includes('image')) {
-              const img = document.createElement('img');
-              img.src = e.target.result;
-              fileItem.appendChild(img);
-          } else {
-              const defaultImageSrc = 'https://via.placeholder.com/150';
-              const img = document.createElement('img');
-              img.src = defaultImageSrc;
-              fileItem.appendChild(img);
-          }
+        if (file.type.includes('image')) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          fileItem.appendChild(img);
+        } else {
+          const defaultImageSrc = 'https://via.placeholder.com/150';
+          const img = document.createElement('img');
+          img.src = defaultImageSrc;
+          fileItem.appendChild(img);
+        }
 
-          const fileName = document.createElement('div');
-          fileName.classList.add('file-name');
-          fileName.textContent = file.name;
+        const fileName = document.createElement('div');
+        fileName.classList.add('file-name');
+        fileName.textContent = file.name;
 
-          fileItem.appendChild(fileName);
-          previewContainer.appendChild(fileItem);
+        fileItem.appendChild(fileName);
+        previewContainer.appendChild(fileItem);
       };
 
       reader.readAsDataURL(file);
+    }
   }
-}
