@@ -15,9 +15,28 @@
   </head>
 
   <body>
-    <a href="{{url_for('home')}}"
-      ><i class="bx bx-arrow-back" style="color: #000000"></i
-    ></a>
+    {% if status == 'exsist' %}
+    <script>
+      function YourFunction() {
+        alert("User already exsists...");
+      }
+      YourFunction();
+    </script>
+    {% endif %} {% if status == 'sucess' %}
+    <script>
+      function YourFunction() {
+        alert(" Registration successful Please login !");
+      }
+      YourFunction();
+    </script>
+    {% endif %} {% if status == 'error' %}
+    <script>
+      function YourFunction() {
+        alert(" Wrong password Please try again. !");
+      }
+      YourFunction();
+    </script>
+    {% endif %}
     <div class="curve"></div>
     <div class="imgbg">
       <img
@@ -26,19 +45,21 @@
       />
     </div>
 
+    <a href="{{url_for('home')}}"><i class="bx bx-arrow-back"></i></a>
+
     <div class="backdrop">
       <div class="wrapper">
         <div class="form-box-login">
           <h2 class="login-head">LOGIN</h2>
-          <form action="#">
+          <form action=" {{ url_for('login')}}" method="POST">
             <div class="input-login">
               <span class="icon"><ion-icon name="mail"></ion-icon></span>
-              <input type="email" id="Email" required />
+              <input type="email" id="Email" name="email" required />
               <label>Email</label>
             </div>
             <div class="input-login">
               <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-              <input type="password" id="Password" required />
+              <input type="password" id="Password" name="password" />
               <label>Password</label>
             </div>
             <div class="remember-box">
@@ -55,18 +76,55 @@
             </div>
           </form>
         </div>
+
         <div class="form-box-register">
           <h2 class="login-head">REGISTRATION</h2>
-          <form action="#">
+          <form action="{{url_for('register')}}" method="post">
             <div class="input-login">
-              <input type="text" id="Username" required />
+              <span class="icon"><ion-icon name="person"></ion-icon></span>
+              <input type="text" id="Username" name="Username" required />
               <label>Username</label>
             </div>
             <div class="input-login">
               <span class="icon"><ion-icon name="mail"></ion-icon></span>
-              <input type="email" id="RegEmail" required />
+              <input type="email" id="RegEmail" name="Email" required />
               <label>Email</label>
             </div>
+            <div class="patient-box">
+              <label
+                ><input
+                  type="checkbox"
+                  name="checkboxGroup"
+                  value="Patient"
+                />Patient</label
+              >
+              <label
+                ><input
+                  type="checkbox"
+                  name="checkboxGroup"
+                  value="Health Representative"
+                />Health Representative</label
+              >
+            </div>
+
+            <script id="checkbox">
+              document.addEventListener("DOMContentLoaded", function () {
+                var checkboxes = document.querySelectorAll(
+                  '.patient-box input[type="checkbox"]'
+                );
+
+                checkboxes.forEach(function (checkbox) {
+                  checkbox.addEventListener("change", function () {
+                    checkboxes.forEach(function (otherCheckbox) {
+                      if (otherCheckbox !== checkbox) {
+                        otherCheckbox.checked = false;
+                      }
+                    });
+                  });
+                });
+              });
+            </script>
+
             <div class="input-login">
               <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
               <input type="password" id="RegPassword" required />
@@ -74,7 +132,7 @@
             </div>
             <div class="remember-box">
               <label
-                ><input type="checkbox"  required/>I agree to the Terms &
+                ><input type="checkbox" />I agree to the Terms &
                 Conditions</label
               >
             </div>

@@ -9,51 +9,68 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 
 
-# Home route+
+# Home route
 @app.route("/")
 def home():
     return render_template('home.html')
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == 'POST':
+        # collecting and storing data from the form.
+        email = request.form["email"]
+        password = request.form["password"]
+        print("Email: %s" % email)
+        print("Password: %s" % password)
+        # checking if the user is already there in the database.
+        user = users_collection.find_one({"email": email})
+        print("User: %s" % user)
+
+        # checking if the user and password match.
+        # if user and check_password_hash(user["password"], password):
+        if user and user["password"] == password:
+            # storing the current user name in the session.
+            session["email"] = email
+            # redirecting to home page.
+            return redirect(url_for("dashboard"))
+        else:
+            return render_template('login.html', status="error")
+    return render_template('login.html', status="error")
+
+
+@app.route("/register")
+def register():
+    if request.method == "POST":
+        # collecting and storing data from the form.
+        username = request.form["Username"]
+        password = request.form["Password"]
+        email = request.form["Email"]
+
+        existing_user = users_collection.find_one({"username": username})
+        if existing_user:
+            return render_template('login.html', status="exsist")
+
+        # creating a hashed password.
+        hashed_password = generate_password_hash(password)
+
+        # adding the username and hashed password to the database.
+        users_collection.insert_one(
+            {"username": username, "password": hashed_password, "email": email})
+
+        return render_template('login.html', status="success")
     return render_template('login.html')
 
 
-# # Check if the user is logged in
+@app.route("/about")
+def about():
+    return render_template('about.html')
 
-# def is_logged_in():
-#     return "username" in session
-# # Sign Up route
-# @app.route("/signup", methods=["GET", "POST"])
-# def signup():
-#     if request.method == "POST":
-#         username = request.form["username"]
-#         password = request.form["password"]
-#         existing_user = users_collection.find_one({"username": username})
-#         if existing_user:
-#             return "Username already exsist ! <a href='/login'>Login here</a> or <a href='/signup'>Try Again</a>"
-#         hashed_password = generate_password_hash(password)
-#         users_collection.insert_one(
-#             {"username": username, "password": hashed_password})
-#         return redirect(url_for("login"))
-#     return render_template("signup.html")
-# # Login route
-# @app.route("/login", methods=["GET", "POST"])
-# def login():
-#     if request.method == "POST":
-#         username = request.form["username"]
-#         password = request.form["password"]
-#         user = users_collection.find_one({"username": username})
-#         if user and check_password_hash(user["password"], password):
-#             session["username"] = username
-#             return redirect(url_for("home"))
-#         return "Invalid username or password. <a href='/login'>Try again</a> or <a href='/signup'>Sign Up Here.</a>"
-#     return render_template("login.html")
-# # Logout route
-# @app.route("/logout")
-# def logout():
-#     session.clear()
-#     return redirect(url_for("home"))
+
+@app.route("/dashboard")
+def dashboard():
+    return render_template('main.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
