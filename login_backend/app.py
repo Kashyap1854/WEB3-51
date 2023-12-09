@@ -29,37 +29,38 @@ def login():
 
         # checking if the user and password match.
         # if user and check_password_hash(user["password"], password):
-        if user and user["password"] == password:
+        if user and check_password_hash(user["password"], password):
             # storing the current user name in the session.
             session["email"] = email
             # redirecting to home page.
             return redirect(url_for("dashboard"))
         else:
             return render_template('login.html', status="error")
-    return render_template('login.html', status="error")
+    return render_template('login.html')
 
 
-@app.route("/register")
+@app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        # collecting and storing data from the form.
-        username = request.form["Username"]
-        password = request.form["Password"]
-        email = request.form["Email"]
-
-        existing_user = users_collection.find_one({"username": username})
-        if existing_user:
-            return render_template('login.html', status="exsist")
-
-        # creating a hashed password.
-        hashed_password = generate_password_hash(password)
-
-        # adding the username and hashed password to the database.
+        email = request.form['Email']
+        username = request.form['Username']
+        password = request.form['Password']
+        person = request.form['Person']
+        print(" Email : " + email)
+        print(" Username : " + username)
+        print(" password : " + password)
+        print(" Person : " + person)
+        hashed = generate_password_hash(password)
         users_collection.insert_one(
-            {"username": username, "password": hashed_password, "email": email})
-
+            {
+                "username": username,
+                "password": hashed,
+                "email": email,
+                "Type": person
+            }
+        )
         return render_template('login.html', status="success")
-    return render_template('login.html')
+    return render_template('login.html', status="failure")
 
 
 @app.route("/about")
