@@ -15,33 +15,13 @@
   </head>
 
   <body>
-    {% if status == 'exsist' %}
+    {% if message %}
     <script>
-      function YourFunction() {
-        alert("User already exsists...");
+      function alertUser() {
+        console.log("User alerted Successfully ! with message: ");
+        alert("{{message}}");
       }
-      YourFunction();
-    </script>
-    {% endif %} {% if status == 'success' %}
-    <script>
-      function YourFunction() {
-        alert(" Registration successful Please login !");
-      }
-      YourFunction();
-    </script>
-    {% endif %} {% if status == 'error' %}
-    <script>
-      function YourFunction() {
-        alert(" Wrong password or username Please try again. !");
-      }
-      YourFunction();
-    </script>
-    {% endif %} {% if status == 'failure' %}
-    <script>
-      function YourFunction() {
-        alert(" Server Issue Please try again. !");
-      }
-      YourFunction();
+      alertUser();
     </script>
     {% endif %}
     <div class="curve"></div>
@@ -61,12 +41,23 @@
           <form action=" {{ url_for('login')}}" method="POST">
             <div class="input-login">
               <span class="icon"><ion-icon name="mail"></ion-icon></span>
-              <input type="email" id="Email" name="email" required />
+              <input
+                type="email"
+                id="Email"
+                name="email"
+                required
+                autocomplete="email"
+              />
               <label>Email</label>
             </div>
             <div class="input-login">
               <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-              <input type="password" id="Password" name="password" />
+              <input
+                type="password"
+                id="Password"
+                name="password"
+                autocomplete="current-password"
+              />
               <label>Password</label>
             </div>
             <div class="remember-box">
@@ -94,7 +85,13 @@
             </div>
             <div class="input-login">
               <span class="icon"><ion-icon name="mail"></ion-icon></span>
-              <input type="email" id="RegEmail" name="Email" required />
+              <input
+                type="email"
+                id="RegEmail"
+                name="Email"
+                required
+                autocomplete="email"
+              />
               <label>Email</label>
             </div>
             <div class="patient-box">
@@ -113,34 +110,20 @@
                 />Health Representative</label
               >
             </div>
-
-            <!-- <script id="checkbox">
-              document.addEventListener("DOMContentLoaded", function () {
-                var checkboxes = document.querySelectorAll(
-                  '.patient-box input[type="checkbox"]'
-                );
-
-                checkboxes.forEach(function (checkbox) {
-                  checkbox.addEventListener("change", function () {
-                    checkboxes.forEach(function (otherCheckbox) {
-                      if (otherCheckbox !== checkbox) {
-                        otherCheckbox.checked = false;
-                      }
-                    });
-                  });
-                });
-              });
-            </script> -->
-
             <div class="input-login">
               <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-              <input type="password" id="RegPassword" name="Password" />
+              <input
+                type="password"
+                id="RegPassword"
+                name="Password"
+                autocomplete="new-password"
+              />
               <label>Password</label>
             </div>
             <div class="remember-box">
               <label
-                ><input type="checkbox" required />I agree to the Terms &
-                Conditions</label
+                ><input type="checkbox" checked required />I agree to the Terms
+                & Conditions</label
               >
             </div>
             <button type="submit" class="btn" id="Register">REGISTER</button>

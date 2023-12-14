@@ -11,7 +11,7 @@ body {
   min-height: 100vh;
   background-color: white;
   font-family: "Roboto", sans-serif;
-  background:url("../917017949818ccfe4475e5f7f65979b6.jpg") no-repeat;
+  background:url("./917017949818ccfe4475e5f7f65979b6.jpg") no-repeat;
   backdrop-filter: blur(2px);
 
   background-size: cover;

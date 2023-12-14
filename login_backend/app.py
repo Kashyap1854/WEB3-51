@@ -35,7 +35,7 @@ def login():
             # redirecting to home page.
             return redirect(url_for("dashboard"))
         else:
-            return render_template('login.html', status="error")
+            return render_template('login.html', message=" Wrong password or username. Please try Again ! ")
     return render_template('login.html')
 
 
@@ -51,6 +51,8 @@ def register():
         print(" password : " + password)
         print(" Person : " + person)
         hashed = generate_password_hash(password)
+        if users_collection.find_one({"username": username}) or users_collection.find_one({'email': email}):
+            return render_template('login.html', message="User already Exsist! Please login.")
         users_collection.insert_one(
             {
                 "username": username,
@@ -59,8 +61,8 @@ def register():
                 "Type": person
             }
         )
-        return render_template('login.html', status="success")
-    return render_template('login.html', status="failure")
+        return render_template('login.html', message="Registration successful ! Please login ")
+    return render_template('login.html')
 
 
 @app.route("/about")
