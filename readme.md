@@ -15,10 +15,10 @@ pip install -r requirements.txt
 ```
 Activate the virtual environment
 > :warning: Below command works only in command prompt.
-``
+
 .venv\Scripts\activate.bat
-```
-Run the app.py file:
+
+Run the application.
 ```
 python app.py
 ```
@@ -27,4 +27,4 @@ python app.py
 
 To close the server press `Ctrl-C` 
 
-Happy journey ! :smiley:
+Thanks for using our application. ! :smiley:
