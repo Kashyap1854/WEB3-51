@@ -1,0 +1,5 @@
+flask
+Flask-PyMongo
+python-dotenv
+Werkzeug
+Flask-mail

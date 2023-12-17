@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='styles/home.css')}}"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <title>MedVault|About Us</title>
+  </head>
+
+  <body>
+    <div class="logo-heading">
+      <a><span>About</span> Us</a>
+    </div>
+    <a href="{{url_for('home')}}"><i class="bx bx-arrow-back"></i></a>
+    <div class="content">
+      <p>
+        <span>Med</span>Vault is a revolutionary healthcare platform harnessing
+        the power of blockchain technology <br />to provide a secure and
+        centralized repository for storing and managing patients'<br />
+        medical reports. In an era where the digitization of healthcare data is
+        critical,<br /><span>Med</span>Vault emerges as a robust solution to
+        streamline the storage and retrieval of vital <br />medical information.
+        The platform leverages the decentralized and tamper-resistant nature
+        <br />of blockchain to ensure the integrity and privacy of patients'
+        sensitive data. <br /><br />
+        With <span>Med</span>Vault, patients can securely upload their medical
+        reports,creating a unified and easily accessible<br />
+        record of their health history.Blockchain's cryptographic principles
+        guarantee data immutability,<br />
+        preventing unauthorized alterations and enhancing the trustworthiness of
+        stored information. <br />This not only mitigates the risk of data
+        breaches but also fosters a seamless exchange of <br />medical records
+        among healthcare providers,ultimately improving the overall quality of
+        patient care. <br /><br />
+        <span>Med</span>Vault's user-friendly interface ensures accessibility
+        for both patients and healthcare<br />
+        professionals, fostering a collaborative and patient-centric approach to
+        healthcare.<br />
+        By harnessing blockchain's transparent and secure architecture,<br />
+        MedVault represents a pivotal step towards the future of healthcare data
+        management,<br />
+        providing a reliable and efficient solution for safeguarding patients'
+        <br />medical information in a singular, safeguarded repository.
+      </p>
+    </div>
+    <div class="curve"></div>
+    <div class="imgbg">
+      <img
+        src="{{url_for('static', filename='styles/3894058.jpeg')}}"
+        class="img"
+      />
+    </div>
+  </body>
+</html>
