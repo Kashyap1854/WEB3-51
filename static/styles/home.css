@@ -66,12 +66,15 @@ body {
   left:0px;
   background: rgb(0, 0, 0);
   border-radius: 5px;
+  transform-origin: right;
   transform: scaleX(0);
   transition: transform 0.5s;
 }
 
-.nav-items a:hover::after {
+.nav-items  a:hover::after ,.nav-items a.active{
   transform: scaleX(1);
+  transform-origin: left;
+ 
 }
 .home-content h1 {
   position: relative;
