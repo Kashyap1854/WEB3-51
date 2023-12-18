@@ -1,79 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@100&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Oswald, sans-serif;
-  font-family: Poppins, sans-serif;
+  text-decoration: none;
 }
+
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
-
-  background-position: center;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+ 
 }
-.wrapper {
-  position: relative;
-  width: 400px;
-  height: 440px;
-  background:white;
-  border: 3px solid #477ad3;
-  border-radius: 40px;
-  backdrop-filter: blur(100px);
-  box-shadow: 50px 40px 30px rgba(0, 0, 0, 0.938);
+.slide-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
-  overflow: hidden;
-  transform: scale(1);
-  transition: transform 0.5s, height 0.2s ease;
+  height: 100vh;
 }
 
-.wrapper  h2 {
-  position: absolute;
+.wrapper {
+  background-color: #fff;
+  border: 1px solid #1d39c5;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.297);
+  border-radius: 8px;
+  width: 450px;
+  height:450px;
+}
+
+.head {
+  position:absolute;
+  font-size: 40px;
+  text-align: center;
+  top: 90px;
+}
+
+.use-con {
+  margin-top: 20px;
+}
+
+.user-in {
+  position:relative;
+  margin-bottom: 20px;
+  font-size:20px;
+  top: 100px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.btn {
+  position: relative;
+  top:100px;
+  display: block;
+  width: 100%;
+  padding: 20px;
+  background-color: #274393;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size:20px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover {
+background-color: #1a2c58;
+}
+.logo-heading {
+  position: fixed;
   font-size: 2em;
+  text-decoration: none;
   color: rgb(0, 0, 0);
-  top: 30px;
+  pointer-events: none;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-left: 30px;
+  font-weight: 900;
+  top: 0px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.logo-heading span {
+  color: #143fb8;
+}
+.bx-arrow-back {
+  position: absolute;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  top: 65px;
+  left: 3%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  line-height: 50px;
   text-align: center;
 }
-.user-in{
-  position: relative;
-  width: 100%;
-  height: 50px;
-  right: 100px;
-  margin: 30px 0;
-}
-.user-in label {
-  position: absolute;
-  top: 50%;
-  left: 0px;
-  font-size: 1em;
-border-bottom: 2px solid rgb(0, 0, 0);
-  color: rgb(0, 0, 0);
-  font-weight: 500;
-  pointer-events: none;
-  transition: 0.5s;
-}
-
-
-.user-in .icon {
-  position: absolute;
-  right: 8px;
-  font-size: 1.2em;
-  color: white;
-  line-height: 57px;
-}
-.btn {
-  width: 100px;
-  height: 45px;
-  background: white;
-  border: 2px solid #477ad3;
-  outline: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1em;
-  color: black;
-  font-weight: bolder;
+.bx-arrow-back:hover {
+  color: rgba(41, 41, 203, 0.877);
 }

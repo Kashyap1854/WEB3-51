@@ -1,56 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@100&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f2f2f2;
+  min-height: 100vh;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
 }
 
-h1 {
-    text-align: center;
+.logo-heading {
+  position: fixed;
+  font-size: 2em;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  pointer-events: none;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-left: 30px;
+  font-weight: 900;
+  top: 0px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.logo-heading span {
+  color: #143fb8;
 }
 
 h2 {
-    text-align: center;
+  position: relative;
+  font-size: 40px;
+  text-align: center;
+  top: 70px;
 }
 
 .items {
-    text-align: center;
+  text-align: center;
 }
 
 #textInput {
-    margin-top: 10px;
-    width: 80%;
-    height: 400px;
-    border-radius: 5px;
-    border: 1px solid blue;
-    margin-bottom: 10px;
-    padding: 10px;
+  position: relative;
+  margin-top: 80px;
+  width: 80%;
+  height: 200px;
+  left: 110px;
+  border-radius: 5px;
+  border: 2px solid blue;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .sbtn,
 .cbtn {
-    width: 80px;
-    height: 50px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
+  position: relative;
+
+  padding: 10px 20px;
+  background-color: #274393;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  color: white;
+  transition: background-color 0.3s;
+  top: 35px;
+  right: 530px;
+  margin-left: 10px;
 }
 
-.sbtn {
-    background: rgb(8, 71, 16);
-    background: linear-gradient(
-        90deg,
-        rgba(8, 71, 16, 1) 0%,
-        rgba(27, 136, 31, 1) 59%,
-        rgba(40, 195, 99, 1) 100%
-    );
-    color: white;
-    margin-left: 45%;
+.cbtn:hover {
+  background-color: #1a2c58;
 }
-
-.cbtn {
-    background-color: #af4c4c;
-    color: white;
-    margin-left: 0%;
+.sbtn:hover {
+  background-color: #1a2c58;
 }
-
+.bx-arrow-back {
+  position: relative;
+  color: rgb(0, 0, 0);
+  font-size: 30px;
+  top: 5px;
+  left: 3%;
+  width: 50px;
+  height: 800px;
+  cursor: pointer;
+  line-height: 50px;
+  text-align: center;
+}
+.bx-arrow-back:hover {
+  color: rgba(41, 41, 203, 0.877);
+}
