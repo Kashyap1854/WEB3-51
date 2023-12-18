@@ -95,12 +95,12 @@
           <div class="icon"><i class="bx bxs-cloud-upload"></i></div>
           <div class="text">Upload File</div>
         </div>
-        <input type="file" id="fileInput" multiple />
+        <input type="file" id="fileInput" multiple >
         <input type="text" id="fileNameInput" placeholder="Enter File Name" />
         <input type="date" id="dateFilter" placeholder="Filter by Date" />
         <button onclick="uploadFiles()">Upload Files</button>
         <button onclick="applyFilter()">Apply Filter</button>
-        <i class='bx bx-filter'></i>
+        <i class="bx bx-filter"></i>
         <div id="fileList"></div>
 
         <div id="file-preview"></div>
@@ -134,9 +134,9 @@
         font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
           "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        margin-left: 120px;
+        margin-left: 110px;
         font-weight: 900;
-        margin-top: 45px;
+        margin-top: 25px;
         margin-bottom: 10px;
         cursor: pointer;
       }
@@ -163,7 +163,7 @@
       }
 
       .sidebar.active {
-        width: 210px;
+        width: 230px;
       }
 
       .sidebar .content .logo {
@@ -322,9 +322,8 @@
       .sidebar.active .list-logout {
         width: 100%;
         padding-right: 30px;
-      
       }
-      .sidebar.active .list-logout input{ 
+      .sidebar.active .list-logout input {
         display: none;
       }
 
@@ -360,83 +359,97 @@
 
       .upload-container {
         position: relative;
-        max-width: 5000px;
-        width: 1000px;
-        padding: 20px;
-        padding: 20px;
-        margin: 0 auto;
-        text-align: center;
-        align-items: center;
+        max-width: 900px;
+        width: 100%;
+        margin: 0px auto;
         top: 100px;
+        text-align: center;
         background: #fff;
         border-radius: 10px;
-        box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.963);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.242);
       }
 
-      #file-input {
-        display: none;
-      }
-      #file-label {
-        cursor: pointer;
-        display: block;
-        padding: 10px;
-        background: #274393;
-        color: #fff;
-        text-align: center;
-        border-radius: 5px;
-        margin-top: 30px;
+      .wrapper {
+        padding: 20px;
       }
 
-      #file-preview {
-        display: flex;
-        overflow-x: auto;
-        white-space: nowrap;
-        max-height: 200px;
-      }
-
-      .file-item {
-        margin-right: 10px;
-      }
-
-      .file-item img {
-        max-width: 100px;
-        max-height: 100px;
-        border: 2px dashed #274393;
-        display: block;
-        margin-bottom: 5px;
-      }
-
-      .file-name {
-        padding: 8px;
-        text-align: center;
-        background: #274393;
-        color: white;
-        width: 100%;
-        text-transform: uppercase;
-        text-align: center;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
       .wrap {
         border: 2px dashed #274393;
-        width: 100%;
         height: 120px;
         border-radius: 8px;
+        display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
+        cursor: pointer;
+        transition: border 0.3s;
       }
+
+      .wrap:hover {
+        border-color: #1a2c58;
+      }
+
       .wrap .icon {
-        font-size: 80px;
+        font-size: 48px;
         color: #274393;
-        margin-bottom: -20px;
+        margin-bottom: 10px;
       }
+
       .wrap .text {
-        font-size: 20px;
+        font-size: 16px;
         color: #274393;
-        margin-top: 0px;
-        margin-bottom: 0px;
+        margin: 0;
+      }
+
+    
+      #fileNameInput,
+      #dateFilter {
+        margin-top: 15px;
+        padding: 8px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      #fileInput{
+        margin-top: 15px;
+        padding: 8px;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        
+      }
+
+      button {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #274393;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #1a2c58;
+      }
+
+      #fileList {
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      #file-preview {
+        margin-top: 20px;
+      }
+
+      .bx-filter {
+        font-size: 24px;
+        color: #274393;
+        margin-top: 20px;
       }
     </style>
     <script>
