@@ -10,15 +10,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-<<<<<<< HEAD:login_backend/static/styles/login.css
-  background: url("./917017949818ccfe4475e5f7f65979b6.jpg") no-repeat;
-  background-size: cover;
-  overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
-=======
-overflow: hidden;
->>>>>>> 27ddce56ad76a4c78afeec9f566967550c1685d2:static/styles/login.css
+  background: rgb(255, 255, 255);
 }
 .wrapper {
   position: relative;
@@ -231,13 +223,14 @@ overflow: hidden;
   color: rgba(41, 41, 203, 0.877);
 }
 
-.imgbg {
+.imgbg img{
   position: absolute;
-  left: 60px;
+  left: 70px;
   top: 70px;
-  width: 50px;
+  height: 500px;
+  width: 500px;
   bottom: 10px;
-  height: 50px;
+
   z-index: 1;
 }
 .logo-heading {
