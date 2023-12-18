@@ -17,15 +17,33 @@ const port = 3000;
 
 app.use(express.static('public'));
 
-
+// Define MongoDB schema
 const fileSchema = new mongoose.Schema({
   ipfsHash: String,
   timestamp: String,
   name: String,
-  size: Number,
+  size: Number, 
 });
 
 const File = mongoose.model('File', fileSchema);
+
+
+let uploadedFiles = [];
+
+
+const initializeUploadedFiles = async () => {
+  try {
+    const filesFromDB = await File.find({}, { _id: 0, __v: 0 });
+    uploadedFiles = filesFromDB;
+    console.log('Files loaded from the database:', uploadedFiles);
+  } catch (error) {
+    console.error('Error loading files from the database:', error);
+    throw error;
+  }
+};
+
+
+initializeUploadedFiles();
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -39,7 +57,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'main.html'));
+  res.sendFile(path.join(__dirname, 'demo.html'));
 });
 
 app.post('/upload', upload.array('files'), async (req, res) => {
@@ -54,8 +72,7 @@ app.post('/upload', upload.array('files'), async (req, res) => {
 
 app.get('/getFilePaths', async (req, res) => {
   try {
-    const fileList = await File.find({}, { _id: 0, __v: 0 });
-    res.json(fileList);
+    res.json(uploadedFiles);
   } catch (error) {
     console.error('Error retrieving file paths:', error);
     res.status(500).send('Internal Server Error');
@@ -101,29 +118,25 @@ const uploadSequentially = async (files, fileName) => {
     try {
       const ipfsHash = await pinFileToIPFS(file);
       ipfsHashes.push(ipfsHash);
-
-      
       const newFile = new File({
         ipfsHash,
         timestamp: new Date().toISOString(),
         size: file.size,
         name: fileName,
       });
-
-      
       console.log('Saving to the database:', newFile);
-
       await newFile.save();
     } catch (error) {
       console.error('Error in pinFileToIPFS or saving to the database:', error);
       throw error;
     }
   }
+
+  initializeUploadedFiles();
+
   return ipfsHashes;
 };
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-
-
