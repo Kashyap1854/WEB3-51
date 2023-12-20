@@ -19,37 +19,38 @@
           <a><span>Med</span>Vault</a>
         </div>
         <div class="nav-items">
-          <a href="../templates/home.html" class="active">HOME</a>
-          <a href="../templates/about.html">ABOUT US</a>
-          <a href="../templates/contact.html">CONTACT US</a>
-          <a href="../templates/login.html" method="POST">
+          <a href="{{url_for('home')}}" class="active">HOME</a>
+          <a href="{{url_for('about')}}">ABOUT US</a>
+          <a href="{{url_for('contact')}}">CONTACT US</a>
+          <a href="{{url_for('login')}}" method="POST">
             <button class="lg-btn">LOGIN</button>
           </a>
         </div>
       </div>
     </header>
-   <div class="wrapper">
-    <div class="content">
-      <p>
-        Welcome to MedVault, where cutting-edge technology meets healthcare<br>
-        convenience.Our platform leverages blockchain technology to provide a<br>
-        secure and decentralized solution for storing your valuable medical<br>
-        reports. With MedVault, your health information is encrypted,<br>
-        tamper-proof, and easily accessible whenever you need it.<br><br> Say goodbye to
-        traditional storage hassles and embrace a seamless<br>, transparent, and
-        private experience. We prioritize the confidentiality of<br> your medical
-        data, ensuring it remains in your control.Trust MedVault to <br>safeguard 
-        your health journey with the power of blockchain,<br> revolutionizing the
-        way you manage and access your medical reports.<br><br><b> Your health, Your data,
-        Your MedVault...</b>
-      </p>
+    <div class="wrapper">
+      <div class="content">
+        <p>
+          Welcome to MedVault, where cutting-edge technology meets healthcare<br />
+          convenience.Our platform leverages blockchain technology to provide
+          a<br />
+          secure and decentralized solution for storing your valuable medical<br />
+          reports. With MedVault, your health information is encrypted,<br />
+          tamper-proof, and easily accessible whenever you need it.<br /><br />
+          Say goodbye to traditional storage hassles and embrace a seamless<br />,
+          transparent, and private experience. We prioritize the confidentiality
+          of<br />
+          your medical data, ensuring it remains in your control.Trust MedVault
+          to <br />safeguard your health journey with the power of
+          blockchain,<br />
+          revolutionizing the way you manage and access your medical reports.<br /><br /><b>
+            Your health, Your data, Your MedVault...</b
+          >
+        </p>
+      </div>
     </div>
-  </div>
     <div class="imgbg">
-      <img
-        src="../static/styles/connect.png"
-        class="img"
-      />
+      <img src="../static/styles/connect.png" class="img" />
     </div>
   </body>
 </html>

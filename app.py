@@ -10,16 +10,7 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(16)
 app.config.from_pyfile('config.cfg')
 salt = secrets.token_hex(16)
-# load_dotenv()
-
 mail = Mail(app)
-
-# app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
-# app.config['MAIL_PORT'] = os.environ.get('MAIL_PORT')
-# app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-# app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-# app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL')
-# app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER')
 
 # Home route
 
@@ -27,6 +18,8 @@ mail = Mail(app)
 @app.route("/")
 def home():
     return render_template('home.html')
+
+# login route
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -50,6 +43,8 @@ def login():
         else:
             return render_template('login.html', message=" Wrong password or username. Please try Again ! ")
     return render_template('login.html')
+
+# register route
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -80,15 +75,21 @@ def register():
             return render_template('login.html', message=" Verification link has been sent to your mailbox. Please check your mailbox")
     return render_template('login.html')
 
+# about route
+
 
 @app.route("/about")
 def about():
     return render_template('about.html')
 
+# dashboard route
+
 
 @app.route("/dashboard")
 def dashboard():
     return render_template('main.html')
+
+# logout route.
 
 
 @app.route("/logout", methods=["GET", "POST"])
@@ -96,6 +97,23 @@ def logout():
     if request.method == "POST":
         session.clear()
         return render_template('home.html')
+
+# contact route
+
+
+@app.route("/contact")
+def contact():
+    return render_template('contact.html')
+
+
+@app.route("/profile")
+def profile():
+    return render_template('profile.html')
+
+
+@app.route("/note")
+def note():
+    return render_template('note.html')
 
 
 s = URLSafeTimedSerializer(app.secret_key)
