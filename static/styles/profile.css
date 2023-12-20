@@ -223,10 +223,10 @@ body {
 
 .wrapper {
   background-color: #fff;
-  border: 1px solid #1d39c5;
+
   padding: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.297);
-  border-radius: 8px;
+  border-radius: 6px;
   width: 450px;
   margin-top: 50px;
   margin-left: 50px;

@@ -156,10 +156,11 @@ body {
   background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(27, 27, 94, 1) 39%,
-    rgba(29, 89, 161, 1) 100%
+    rgb(35, 26, 224) 0%,
+    rgb(75, 75, 255) 39%,
+    rgba(12, 117, 241, 1) 100%
   );
+
   border: none;
   outline: none;
   border-radius: 6px;
