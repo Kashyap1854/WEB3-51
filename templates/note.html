@@ -22,21 +22,21 @@
 
       <ul class="list">
         <li class="list-item active">
-          <a href="{{url_for('dashboard')}}" class="list-link">
+          <a href="../templates/main.html" class="list-link">
             <i class="bx bxs-dashboard"></i>
             <span class="link-name">Dashboard</span>
           </a>
           <span class="badge">Dashboard</span>
         </li>
         <li class="list-item">
-          <a href="{{url_for('profile')}}" class="list-link">
+          <a href="../templates/profile.html" class="list-link">
             <i class="bx bx-user"></i>
             <span class="link-name">User</span>
           </a>
           <span class="badge">User</span>
         </li>
         <li class="list-item">
-          <a href="#" class="list-link">
+          <a href="../templates/note.html" class="list-link">
             <i class="bx bx-file-blank"></i>
             <span class="link-name">Note</span>
           </a>
@@ -45,13 +45,17 @@
       </ul>
       <ul class="list-logout">
         <li>
-          <form action="{{url_for('logout')}}" method="post" id="logout">
-            <a href="#" onclick=" return logout()" class="list-link">
+          <a href="#" class="list-link">
+            <form
+              action="{{url_for('logout')}}"
+              method="post"
+              onSubmit="if(!confirm('Do you want to log out .')){return false;}"
+            >
               <i class="bx bx-log-out"><input type="submit" /></i>
-              <span class="link-name">Log Out</span>
-              <span class="badge">Log Out</span>
-            </a>
-          </form>
+            </form>
+            <span class="link-name">Log Out</span>
+            <span class="badge">Log Out</span>
+          </a>
         </li>
       </ul>
     </div>
@@ -60,19 +64,169 @@
       <div class="color-picker">
         <input type="color" id="colorPicker" value="#6787de" />
       </div>
+
       <div class="items">
         <textarea
           class="item-content"
-          id="textInput"
+          id="healthInfo"
           placeholder="Type your note here..."
         ></textarea>
-        <button class="sbtn" onclick="saveNote()">Save Note</button>
-        <button class="cbtn" onclick="clearNotes()">Clear Notes</button>
+        <button class="sbtn" onclick="addInfo()">Save Note</button>
       </div>
       <div class="saved-notes" id="savedNotes">
-        <!-- Saved notes will appear here -->
       </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
     <script src="../static/scripts/note.js"></script>
+    <script>
+      if (typeof web3 !== "undefined") {
+        web3 = new Web3(web3.currentProvider);
+      } else {
+        alert("Please install MetaMask to use this application");
+      }
+        
+      const contractAddress = '0x5E6b654110113f55edFD0C1C68975b2d8bc8Bd7F';
+        const contractABI = [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "infoId",
+          "type": "uint256"
+        }
+      ],
+      "name": "AddInfo",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "infoId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "isDeleted",
+          "type": "bool"
+        }
+      ],
+      "name": "DeleteInfo",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "healthInfo",
+          "type": "string"
+        },
+        {
+          "internalType": "bool",
+          "name": "isDeleted",
+          "type": "bool"
+        }
+      ],
+      "name": "addInfo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getHealthInfo",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "healthInfo",
+              "type": "string"
+            },
+            {
+              "internalType": "bool",
+              "name": "isDeleted",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct InfoContract.Info[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "infoId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "isDeleted",
+          "type": "bool"
+        }
+      ],
+      "name": "deleteInfo",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ];
+      
+        const infoContract = new web3.eth.Contract(contractABI, contractAddress);
+        async function addInfo() {
+            const healthInfo = document.getElementById("healthInfo").value;
+            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+            const userAccount = accounts[0];
+
+            await infoContract.methods.addInfo(healthInfo, false).send({ from: userAccount });
+            getHealthInfo();
+        }
+
+        async function deleteInfo(infoId) {
+            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+            const userAccount = accounts[0];
+
+            await infoContract.methods.deleteInfo(infoId, true).send({ from: userAccount });
+            getHealthInfo();
+        }
+
+        async function getHealthInfo() {
+            const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+            const userAccount = accounts[0];
+            const userHealthInfo = await infoContract.methods.getHealthInfo().call({ from: userAccount });
+            const infoList = document.getElementById("savedNotes");
+            infoList.innerHTML = '';
+
+            userHealthInfo.forEach(info => {
+                const listItem = document.createElement("div");
+                listItem.innerHTML = `${info.healthInfo} <button onclick="deleteInfo(${info.id})">Delete</button>`;
+                infoList.appendChild(listItem);
+            });
+        }
+        getHealthInfo();
+    </script>
   </body>
 </html>
