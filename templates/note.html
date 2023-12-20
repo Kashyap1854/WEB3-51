@@ -1,23 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Text Storage</title>
-    <link rel="stylesheet" href="../static/styles/note.css">
-</head>
-<body>
-    <a href="../templates/main.html"><i class='bx bx-arrow-back'></i></i></a>
+    <link rel="stylesheet" href="../static/styles/note.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="logo-heading">
-        <a><span>Med</span>Vault</a>
-      </div>
-    <h2>NOTE</h2>
-    <div class="items">
-    <textarea class="content" id="textInput"></textarea>
-    <button class="sbtn" onclick="saveText()">Save Text</button>
-    <button class="cbtn" onclick="clearText()">Clear Text</button>
+      <a><span>Med</span>Vault</a>
     </div>
-    <script src="../static/scripts/note.js"></script>
 
-</body>
+    <div class="sidebar">
+      <div class="content">
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+
+      <ul class="list">
+       
+
+        <li class="list-item active">
+          <a href="../templates/main.html" class="list-link">
+            <i class="bx bxs-dashboard"></i>
+            <span class="link-name">Dashboard</span>
+          </a>
+          <span class="badge">Dashboard</span>
+        </li>
+        <li class="list-item">
+          <a href="../templates/profile.html" class="list-link">
+            <i class="bx bx-user"></i>
+            <span class="link-name">User</span>
+          </a>
+          <span class="badge">User</span>
+        </li>
+        <li class="list-item">
+          <a href="../templates/note.html" class="list-link">
+            <i class="bx bx-file-blank"></i>
+            <span class="link-name">Note</span>
+          </a>
+          <span class="badge">Note</span>
+        </li>
+        <li class="list-item">
+          <a href="#" class="list-link">
+            <i class="bx bxs-message-minus"></i>
+            <span class="link-name">Contact Us</span>
+          </a>
+          <span class="badge">Contact Us</span>
+        </li>
+        <li class="list-item">
+          <a href="#" class="list-link">
+            <i class="bx bx-cog"></i>
+            <span class="link-name">Settings</span>
+          </a>
+          <span class="badge">Settings</span>
+        </li>
+      </ul>
+      <ul class="list-logout">
+        <li>
+          <a href="#" class="list-link">
+            <form
+              action="{{url_for('logout')}}"
+              method="post"
+              onSubmit="if(!confirm('Do you want to log out .')){return false;}"
+            >
+              <i class="bx bx-log-out"><input type="submit" /></i>
+            </form>
+            <span class="link-name">Log Out</span>
+            <span class="badge">Log Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!----------------------------------------------------->
+    <div class="note-container">
+      <div class="color-picker">
+          <input type="color" id="colorPicker" value="#ffcc00">
+      </div>
+      <div class="items">
+          <textarea class="content" id="textInput" placeholder="Type your note here..."></textarea>
+          <button class="sbtn" onclick="saveNote()">Save Note</button>
+          <button class="cbtn" onclick="clearNotes()">Clear Notes</button>
+      </div>
+      <div class="saved-notes" id="savedNotes">
+          <!-- Saved notes will appear here -->
+      </div>
+  </div>
+    <script src="../static/scripts/note.js"></script>
+  </body>
 </html>

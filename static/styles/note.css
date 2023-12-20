@@ -6,11 +6,15 @@
   box-sizing: border-box;
 }
 body {
+ 
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 100vh;
-  background-color: white;
-  font-family: "Roboto", sans-serif;
+  background-color: #d8d9da;
 }
-
 .logo-heading {
   position: fixed;
   font-size: 2em;
@@ -20,9 +24,9 @@ body {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  margin-left: 30px;
+  left: 110px;
   font-weight: 900;
-  top: 0px;
+ top: 25px;
   margin-bottom: 10px;
   cursor: pointer;
 }
@@ -30,66 +34,267 @@ body {
   color: #143fb8;
 }
 
-h2 {
-  position: relative;
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100%;
+  background:rgba(45,70,199,255);
+  padding: 30px 14px;
+  z-index: 100;
+  transition: all 0.5s ease-in-out;
+}
+
+.sidebar.active {
+  width: 210px;
+}
+
+.sidebar .content .logo {
+  display: flex;
+  align-items: center;
+  color: white;
+  width: 100%;
+  pointer-events: none;
+  height: 50px;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin-bottom: 10px;
+  transition: 0.5s ease;
+  opacity: 0;
+}
+
+.sidebar.active .content .logo {
+  opacity: 1;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+}
+
+.sidebar #btn {
+  position: absolute;
+  top: 20px;
+  left: 45%;
   font-size: 40px;
+  transform: translate(-50%);
+  width: 50px;
+  height: 50px;
   text-align: center;
-  top: 70px;
+  line-height: 50px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar.active #btn {
+  left: 90%;
+  top: 0px;
+  transition-delay: 0.1s;
+  font-size: 30px;
+}
+
+.sidebar ul {
+  margin-top: 20px;
+}
+
+.sidebar ul li {
+  position: relative;
+  list-style: none;
+  height: 50px;
+  width: 100%;
+  margin: 10px 0;
+  line-height: 50px;
+  border-radius: 15px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul li input {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 6px;
+  background: transparent;
+  border: none;
+  outline: none;
+  opacity: 0;
+  padding-left: 50px;
+  color: white;
+}
+
+.sidebar.active ul li input {
+  padding: 0 10px 0 50px;
+  opacity: 1;
+}
+
+.sidebar ul li .bx-search {
+  position: absolute;
+  top: 50%;
+  color: white;
+  cursor: pointer;
+  left: 0px;
+  transform: translateY(-50%);
+  font-size: 30px;
+  z-index: 99;
+}
+
+.sidebar ul li a {
+  position: relative;
+  display: flex;
+  color: white;
+  align-items: center;
+  font-weight: 400;
+  height: 100%;
+  white-space: nowrap;
+  width: 100%;
+  line-height: 50px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+  background:rgba(26,43,130,255);
+  color: white;
+  transition-delay: 0.1s;
+  font-weight: 900;
+}
+
+.sidebar ul li i {
+  height: 50px;
+  min-width: 50px;
+  margin-left: 5px;
+  font-size: 35px;
+  text-align: center;
+  align-items: center;
+  line-height: 50px;
+  border-radius: 6px;
+}
+
+.sidebar.active ul li i {
+  font-size: 20px;
+  margin-right: 15px;
+}
+
+.sidebar ul li .link-name {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.sidebar.active ul li .link-name {
+  opacity: 1;
+  transition-delay: 0.2s;
+  pointer-events: auto;
+}
+
+.sidebar .list-logout {
+  position: absolute;
+  bottom: 20px;
+  margin: 15px 0;
+  width: 100%;
+  white-space: nowrap;
+  height: 50px;
+  padding-right: 30px;
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar.active .list-logout {
+  width: 100%;
+  padding-right: 30px;
+}
+
+.sidebar ul li .badge {
+  position: absolute;
+  top: 0;
+  left: 160px;
+  transform: translate(-50%, -50%);
+  width: 140px;
+  height: 35px;
+  background: #274393;
+  color: white;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 35px;
+  text-align: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.5s ease;
+}
+
+.sidebar ul li:hover .badge {
+  opacity: 1;
+  transition: 0.5s ease;
+  top: 50%;
+}
+.sidebar.active ul li .badge {
+  display: none;
+}
+/*---------------------*/
+.note-container {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.color-picker {
+  margin-bottom: 20px;
+}
+
+.color-picker input {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .items {
-  text-align: center;
+  margin-bottom: 20px;
 }
 
-#textInput {
-  position: relative;
-  margin-top: 80px;
-  width: 80%;
-  height: 200px;
-  left: 110px;
-  border-radius: 5px;
-  border: 2px solid blue;
+.content {
+  width: 300px;
+  height: 100px;
+  resize: none;
   margin-bottom: 10px;
   padding: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-.sbtn,
-.cbtn {
-  position: relative;
-
-  padding: 10px 20px;
-  background-color: #274393;
+.sbtn, .cbtn {
+  padding: 10px;
+  color: #fff;
   border: none;
-  outline: none;
-  border-radius: 6px;
   cursor: pointer;
-  font-size: 1em;
-  color: white;
-  transition: background-color 0.3s;
-  top: 35px;
-  right: 530px;
+  font-size: 16px;
+}
+
+.sbtn {
+  background-color: #28a745;
+}
+
+.cbtn {
+  background-color: #dc3545;
   margin-left: 10px;
 }
 
-.cbtn:hover {
-  background-color: #1a2c58;
+.saved-notes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.sbtn:hover {
-  background-color: #1a2c58;
-}
-.bx-arrow-back {
-  position: relative;
-  color: rgb(0, 0, 0);
-  font-size: 30px;
-  top: 5px;
-  left: 3%;
-  width: 50px;
-  height: 800px;
-  cursor: pointer;
-  line-height: 50px;
-  text-align: center;
-}
-.bx-arrow-back:hover {
-  color: rgba(41, 41, 203, 0.877);
+
+.note {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  max-width: 200px;
+  word-wrap: break-word;
 }
