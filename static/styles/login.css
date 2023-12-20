@@ -19,7 +19,8 @@ body {
   top: px;
   height: 500px;
   background: white;
-  box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.963);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.511);
+
   display: flex;
   justify-content: center;
   align-items: center;
