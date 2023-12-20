@@ -216,21 +216,23 @@ body {
 /******************/
 .note-container {
   text-align: center;
-  background-color: #fff;
-  padding: 20px;
+ background-color: rgba(231, 231, 231, 0.815);
+  padding: 40px;
   border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.301);
 }
 
 .color-picker {
+  display: flex;
   margin-bottom: 20px;
+  border-radius: 2px;
 }
 
 .color-picker input {
   width: 30px;
   height: 30px;
   border: none;
-  border-radius: 50%;
+  border-radius:80px;
   cursor: pointer;
 }
 
@@ -242,26 +244,39 @@ body {
   width: 300px;
   height: 100px;
   resize: none;
+  border: 1px solid #ccc;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.071);
+  border-radius: 8px;
   margin-bottom: 10px;
   padding: 10px;
 }
 
 .sbtn,
 .cbtn {
-  padding: 10px;
-  color: #fff;
-  border: none;
+  position: relative;
+  top: 30px;
+  left:-280px;
+  padding: 12px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #274393;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
 }
-
-.sbtn {
-  background-color: #28a745;
+.cbtn{
+  margin-left: 10px;
+}
+.sbtn:hover{
+  background-color: #1a2c58;
+  color: white;
+  border: none;
 }
 
-.cbtn {
-  background-color: #dc3545;
-  margin-left: 10px;
+.cbtn:hover {
+  background-color: #1a2c58;
+  color: white;
+  border: none;
 }
 
 .saved-notes {
@@ -272,7 +287,8 @@ body {
 
 .note {
   padding: 10px;
-  margin: 10px;
+  margin: 30px;
+  border-radius:9px;
   border: 1px solid #ccc;
   max-width: 200px;
   word-wrap: break-word;
