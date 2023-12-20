@@ -21,21 +21,10 @@
 
     <div class="sidebar">
       <div class="content">
-        <div class="logo">
-          <h3>MedVault</h3>
-        </div>
-
         <i class="bx bx-menu" id="btn"></i>
       </div>
 
       <ul class="list">
-        <li class="search">
-          <span>
-            <i class="bx bx-search"></i>
-            <input type="text" placeholder="Search..." />
-          </span>
-        </li>
-
         <li class="list-item active">
           <a href="../templates/main.html" class="list-link">
             <i class="bx bxs-dashboard"></i>
@@ -56,20 +45,6 @@
             <span class="link-name">Note</span>
           </a>
           <span class="badge">Note</span>
-        </li>
-        <li class="list-item">
-          <a href="#" class="list-link">
-            <i class="bx bxs-message-minus"></i>
-            <span class="link-name">Contact Us</span>
-          </a>
-          <span class="badge">Contact Us</span>
-        </li>
-        <li class="list-item">
-          <a href="#" class="list-link">
-            <i class="bx bx-cog"></i>
-            <span class="link-name">Settings</span>
-          </a>
-          <span class="badge">Settings</span>
         </li>
       </ul>
       <ul class="list-logout">
@@ -114,12 +89,15 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         min-height: 100vh;
-        background-color: white;
         font-family: "Roboto", sans-serif;
-       
+        background-color: rgb(231, 231, 231);
       }
       .logo-heading {
         position: fixed;
@@ -130,9 +108,9 @@
         font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
           Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
           "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        margin-left: 110px;
+        left: 110px;
         font-weight: 900;
-        margin-top: 25px;
+        top: 25px;
         margin-bottom: 10px;
         cursor: pointer;
       }
@@ -146,13 +124,7 @@
         left: 0;
         width: 100px;
         height: 100%;
-        background: rgb(2, 0, 36);
-        background: linear-gradient(
-          90deg,
-          rgba(2, 0, 36, 1) 0%,
-          rgba(27, 27, 94, 1) 39%,
-          rgba(29, 89, 161, 1) 100%
-        );
+        background: rgba(45, 70, 199, 255);
         padding: 30px 14px;
         z-index: 100;
         transition: all 0.5s ease-in-out;
@@ -160,28 +132,7 @@
 
       .sidebar.active {
         width: 210px;
-      }
-
-      .sidebar .content .logo {
-        display: flex;
-        align-items: center;
-        color: white;
-        width: 100%;
-        pointer-events: none;
-        height: 50px;
-        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        margin-bottom: 10px;
-        transition: 0.5s ease;
-        opacity: 0;
-      }
-
-      .sidebar.active .content .logo {
-        opacity: 1;
-        top: 0;
-        left: 0;
-        font-size: 20px;
+        overflow: hidden;
       }
 
       .sidebar #btn {
@@ -202,10 +153,12 @@
       .sidebar.active #btn {
         left: 90%;
         top: 0px;
+        background: rgba(26, 43, 130, 255);
+        color: white;
         transition-delay: 0.1s;
-        font-size: 30px;
+        font-weight: 900;
+        border-bottom-left-radius: 8px;
       }
-
       .sidebar ul {
         margin-top: 20px;
       }
@@ -215,7 +168,7 @@
         list-style: none;
         height: 50px;
         width: 100%;
-        margin: 10px 0;
+        margin: 80px 0;
         line-height: 50px;
         border-radius: 15px;
         transition: all 0.3s ease-in-out;
@@ -223,7 +176,7 @@
 
       .sidebar ul li input {
         position: absolute;
-        top: 0;
+        margin-top: 10px;
         left: 0px;
         width: 100%;
         height: 100%;
@@ -242,24 +195,14 @@
         opacity: 1;
       }
 
-      .sidebar ul li .bx-search {
-        position: absolute;
-        top: 50%;
-        color: white;
-        cursor: pointer;
-        left: 0px;
-        transform: translateY(-50%);
-        font-size: 30px;
-        z-index: 99;
-      }
-
       .sidebar ul li a {
         position: relative;
         display: flex;
         color: white;
         align-items: center;
-        font-weight: 400;
+        font-weight: 900;
         height: 100%;
+        margin-top: 0px;
         white-space: nowrap;
         width: 100%;
         line-height: 50px;
@@ -269,10 +212,12 @@
       }
 
       .sidebar ul li a:hover {
-        background: rgb(255, 255, 255);
-        color: #274393;
+        background: rgba(26, 43, 130, 255);
+        color: white;
         transition-delay: 0.1s;
         font-weight: 900;
+        align-content: center;
+        border-radius: 6px;
       }
 
       .sidebar ul li i {
@@ -287,12 +232,13 @@
       }
 
       .sidebar.active ul li i {
-        font-size: 20px;
+        font-size: 25px;
         margin-right: 15px;
       }
 
       .sidebar ul li .link-name {
         opacity: 0;
+
         pointer-events: none;
         transition: opacity 0.5s ease-in-out;
       }
@@ -300,12 +246,13 @@
       .sidebar.active ul li .link-name {
         opacity: 1;
         transition-delay: 0.2s;
+        font-size: 20px;
         pointer-events: auto;
       }
 
       .sidebar .list-logout {
         position: absolute;
-        bottom: 20px;
+        bottom: 80px;
         margin: 15px 0;
         width: 100%;
         white-space: nowrap;
@@ -318,6 +265,9 @@
       .sidebar.active .list-logout {
         width: 100%;
         padding-right: 30px;
+      }
+      .sidebar.active .list-logout .list-link input {
+        display: none;
       }
 
       .sidebar ul li .badge {
@@ -347,7 +297,7 @@
       .sidebar.active ul li .badge {
         display: none;
       }
-
+      /******************/
       /* home items */
 
       .upload-container {
@@ -355,7 +305,7 @@
         max-width: 900px;
         width: 100%;
         margin: 0px auto;
-        top:100px;
+        top: 100px;
         text-align: center;
         background: #fff;
         border-radius: 10px;
@@ -437,7 +387,6 @@
       }
     </style>
     <script>
-    
       let btn = document.querySelector("#btn");
       let sidebar = document.querySelector(".sidebar");
       let searchBtn = document.querySelector(".bx-search");
@@ -451,14 +400,11 @@
         sidebar.classList.toggle("active");
       };
 
-    
       function activeLink() {
         listitem.forEach((item) => item.classList.remove("active"));
         this.classList.add("active");
       }
       listitem.forEach((item) => (item.onclick = activeLink));
-
-    
     </script>
   </body>
 </html>

@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='styles/home.css')}}"
-    />
+    <link rel="stylesheet" href="../static/styles/about.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -16,45 +13,41 @@
   </head>
 
   <body>
-    <div class="logo-heading">
-      <a><span>About</span> Us</a>
-    </div>
-    <a href="{{url_for('home')}}"><i class="bx bx-arrow-back"></i></a>
+    <header class="container">
+      <div class="navbar">
+        <div class="logo-heading">
+          <a><span>Med</span>Vault</a>
+        </div>
+        <div class="nav-items">
+          <a href="../templates/home.html" class="active">HOME</a>
+          <a href="../templates/about.html">ABOUT US</a>
+          <a href="../templates/contact.html">CONTACT US</a>
+          <a href="../templates/login.html" method="POST">
+            <button class="lg-btn">LOGIN</button>
+          </a>
+        </div>
+      </div>
+    </header>
+   
     <div class="content">
       <p>
-        <span>Med</span>Vault is a revolutionary healthcare platform harnessing
-        the power of blockchain technology <br />to provide a secure and
-        centralized repository for storing and managing patients'<br />
-        medical reports. In an era where the digitization of healthcare data is
-        critical,<br /><span>Med</span>Vault emerges as a robust solution to
-        streamline the storage and retrieval of vital <br />medical information.
-        The platform leverages the decentralized and tamper-resistant nature
-        <br />of blockchain to ensure the integrity and privacy of patients'
-        sensitive data. <br /><br />
-        With <span>Med</span>Vault, patients can securely upload their medical
-        reports,creating a unified and easily accessible<br />
-        record of their health history.Blockchain's cryptographic principles
-        guarantee data immutability,<br />
-        preventing unauthorized alterations and enhancing the trustworthiness of
-        stored information. <br />This not only mitigates the risk of data
-        breaches but also fosters a seamless exchange of <br />medical records
-        among healthcare providers,ultimately improving the overall quality of
-        patient care. <br /><br />
-        <span>Med</span>Vault's user-friendly interface ensures accessibility
-        for both patients and healthcare<br />
-        professionals, fostering a collaborative and patient-centric approach to
-        healthcare.<br />
-        By harnessing blockchain's transparent and secure architecture,<br />
-        MedVault represents a pivotal step towards the future of healthcare data
-        management,<br />
-        providing a reliable and efficient solution for safeguarding patients'
-        <br />medical information in a singular, safeguarded repository.
+        Welcome to MedVault, where cutting-edge technology meets healthcare<br>
+        convenience.Our platform leverages blockchain technology to provide a<br>
+        secure and decentralized solution for storing your valuable medical<br>
+        reports. With MedVault, your health information is encrypted,<br>
+        tamper-proof, and easily accessible whenever you need it.<br><br> Say goodbye to
+        traditional storage hassles and embrace a seamless<br>, transparent, and
+        private experience. We prioritize the confidentiality of<br> your medical
+        data, ensuring it remains in your control.Trust MedVault to <br>safeguard 
+        your health journey with the power of blockchain,<br> revolutionizing the
+        way you manage and access your medical reports.<br><br><b> Your health, Your data,
+        Your MedVault...</b>
       </p>
     </div>
-    <div class="curve"></div>
+    
     <div class="imgbg">
       <img
-        src="{{url_for('static', filename='styles/3894058.jpeg')}}"
+        src="../static/styles/connect.png"
         class="img"
       />
     </div>

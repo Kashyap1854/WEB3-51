@@ -1,120 +1,96 @@
 <!DOCTYPE html>
 
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>MedVault|User</title>
-        <link rel="stylesheet" href="../static/styles/profile.css">
-        <link
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedVault|User</title>
+    <link rel="stylesheet" href="../static/styles/profile.css" />
+    <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-                                        
-    </head>
-    <body>
-        <div class="logo-heading">
-            <a><span>Med</span>Vault</a>
-          </div>
-      
-          <div class="sidebar">
-            <div class="content">
-              <div class="logo">
-                <h3>MedVault</h3>
-              </div>
-      
-              <i class="bx bx-menu" id="btn"></i>
-            </div>
-      
-            <ul class="list">
-              <li class="search">
-                <span>
-                  <i class="bx bx-search"></i>
-                  <input type="text" placeholder="Search..." />
-                </span>
-              </li>
-      
-              <li class="list-item active">
-                <a href="#" class="list-link">
-                  <i class="bx bxs-dashboard"></i>
-                  <span class="link-name">Dashboard</span>
-                </a>
-                <span class="badge">Dashboard</span>
-              </li>
-              <li class="list-item">
-                <a href="../templates/profile.html" class="list-link">
-                  <i class="bx bx-user"></i>
-                  <span class="link-name">User</span>
-                </a>
-                <span class="badge">User</span>
-              </li>
-              <li class="list-item">
-                <a href="../templates/note.html" class="list-link">
-                  <i class="bx bx-file-blank"></i>
-                  <span class="link-name">Note</span>
-                </a>
-                <span class="badge">Note</span>
-              </li>
-              <li class="list-item">
-                <a href="#" class="list-link">
-                  <i class="bx bxs-message-minus"></i>
-                  <span class="link-name">Contact Us</span>
-                </a>
-                <span class="badge">Contact Us</span>
-              </li>
-              <li class="list-item">
-                <a href="#" class="list-link">
-                  <i class="bx bx-cog"></i>
-                  <span class="link-name">Settings</span>
-                </a>
-                <span class="badge">Settings</span>
-              </li>
-            </ul>
-            <ul class="list-logout">
-              <li>
-                <a href="#" class="list-link">
-                  <form
-                    action="{{url_for('logout')}}"
-                    method="post"
-                    onSubmit="if(!confirm('Do you want to log out .')){return false;}"
-                  >
-                    <i class="bx bx-log-out"><input type="submit" /></i>
-                  </form>
-                  <span class="link-name">Log Out</span>
-                  <span class="badge">Log Out</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+  </head>
+  <body>
+    <div class="logo-heading">
+      <a><span>Med</span>Vault</a>
+    </div>
+
+    <div class="sidebar">
+      <div class="content">
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+
+      <ul class="list">
+        <li class="list-item active">
+          <a href="../templates/main.html" class="list-link">
+            <i class="bx bxs-dashboard"></i>
+            <span class="link-name">Dashboard</span>
+          </a>
+          <span class="badge">Dashboard</span>
+        </li>
+        <li class="list-item">
+          <a href="../templates/profile.html" class="list-link">
+            <i class="bx bx-user"></i>
+            <span class="link-name">User</span>
+          </a>
+          <span class="badge">User</span>
+        </li>
+        <li class="list-item">
+          <a href="../templates/note.html" class="list-link">
+            <i class="bx bx-file-blank"></i>
+            <span class="link-name">Note</span>
+          </a>
+          <span class="badge">Note</span>
+        </li>
+      </ul>
+      <ul class="list-logout">
+        <li>
+          <a href="#" class="list-link">
+            <form
+              action="../templates/home.html"
+              method="post"
+              onSubmit="if(!confirm('Do you want to log out .')){return false;}"
+            >
+              <i class="bx bx-log-out"><input type="submit" /></i>
+            </form>
+            <span class="link-name">Log Out</span>
+            <span class="badge">Log Out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
     <!--------------------------------->
-        <div class="slide-container">
-            <h2 class="head">USER</h2>
-            <div class="wrapper">
-               
-               <div class="use-con">
-                    <div class="user-in">
-                      
-                        <label>Username:</label>
-                    </div>
-                    <div class="user-in">
-                       
-                        <label>Email:</label>
-                    </div>
-                    <div class="user-in">
-                        
-                        <label>Password:</label>
-                    </div>
-                    <div class="user-in">
-                        
-                        <label>Category:</label>
-                    </div>
-                    <a href="main.html">
-                    <button type="submit" class="btn" id="back">BACK</button>
-                    </a>
-                </div>
-            </div>
-        
-    </body>
-    <script src="../static/scripts/main.js"></script>
+    <div class="slide-container">
+      <h2 class="head">USER</h2>
+      <div class="wrapper">
+        <div class="use-con">
+          <div class="user-in">
+            <label>Username:</label>
+          </div>
+          <div class="user-in">
+            <label>Email:</label>
+          </div>
+          <div class="user-in">
+            <label>Password:</label>
+          </div>
+          <div class="user-in">
+            <label>Category:</label>
+          </div>
+          <a href="main.html">
+            <button type="submit" class="btn" id="back">BACK</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="image-container">
+      <div class="wrapper-img">
+        <div class="image">
+          <img src="../static/styles/profile3.jpg" alt="user" />
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="../static/scripts/main.js"></script>
 </html>

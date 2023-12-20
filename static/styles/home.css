@@ -8,10 +8,8 @@
 }
 body {
   min-height: 100vh;
-  background-size: cover;
+  background-color: rgb(231, 231, 231);
   overflow: hidden;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .navbar {
@@ -23,7 +21,6 @@ body {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  backdrop-filter: blur(10px);
   z-index: 99;
 }
 .logo-heading {
@@ -44,11 +41,11 @@ body {
 .logo-heading span {
   color: #143fb8;
 }
-.nav-items a{
+.nav-items a {
   position: relative;
-  font-weight:500;
-  right:160px;
- margin-left: 40px;
+  font-weight: 500;
+  right: 160px;
+  margin-left: 40px;
   cursor: pointer;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
@@ -63,7 +60,7 @@ body {
   width: 100%;
   height: 3px;
   top: 20px;
-  left:0px;
+  left: 0px;
   background: rgb(0, 0, 0);
   border-radius: 5px;
   transform-origin: right;
@@ -71,15 +68,15 @@ body {
   transition: transform 0.5s;
 }
 
-.nav-items  a:hover::after ,.nav-items a.active{
+.nav-items a:hover::after,
+.nav-items a.active {
   transform: scaleX(1);
   transform-origin: left;
- 
 }
 .home-content h1 {
   position: relative;
   display: flex;
-  margin-top: 10px;
+
   margin-left: 70px;
 
   text-align: left;
@@ -101,27 +98,27 @@ body {
   color: rgb(28, 28, 193);
 }
 .home-content h3 {
-  margin-top: 150px;
+  margin-top: 160px;
   margin-left: 300px;
-  margin-bottom: 5px;
+
   font-family: "Roboto", sans-serif;
   font-weight: 800;
   align-content: center;
   color: rgb(0, 0, 0);
   font-size: 35px;
 }
- .navbar .lg-btn{
+.navbar .lg-btn {
   position: absolute;
   top: -10px;
   left: px;
- 
-margin-left:0px;
+
+  margin-left: 0px;
   width: 130px;
   height: 50px;
   border-radius: 6px;
   font-weight: 500;
-  font-size:1.1em;
-  color:rgb(28, 28, 193);
+  font-size: 1.1em;
+  color: rgb(28, 28, 193);
   cursor: pointer;
   background: transparent;
   border: 2px solid rgb(28, 28, 193);
@@ -129,9 +126,8 @@ margin-left:0px;
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  
 }
-.navbar .lg-btn:hover{
+.navbar .lg-btn:hover {
   background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
@@ -143,7 +139,7 @@ margin-left:0px;
   border: none;
 }
 .home-content h2 {
-  margin-left: 110px;
+  margin-left: 100px;
   margin-top: 10px;
   font-family: "Roboto", sans-serif;
 }
@@ -161,13 +157,11 @@ margin-left:0px;
     rgb(75, 75, 255) 39%,
     rgba(12, 117, 241, 1) 100%
   );
-  clip-path: circle(500px at right 700px);
+  clip-path: circle(500px at right 800px);
 }
-.imgbg {
+.imgbg img {
   position: absolute;
-  left: 790px;
-  background:transparent;
-  top: 60px;
-  height: 720px;
-  z-index: 100;
+  left: 780px;
+  top: 120px;
+  height: 480px;
 }

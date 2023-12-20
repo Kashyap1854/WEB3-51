@@ -10,15 +10,15 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: rgb(255, 255, 255);
+  background-color:rgb(231, 231, 231);
 }
 .wrapper {
   position: relative;
   width: 420px;
-  left: 250px;
+  left: 220px;
   top: px;
   height: 500px;
-  backdrop-filter: blur(25px);
+  background: white;
   box-shadow: 10px 20px 20px rgba(0, 0, 0, 0.963);
   display: flex;
   justify-content: center;
@@ -40,24 +40,7 @@ body {
   position: absolute;
   transform: translateX(-400px);
 }
-/*cross section*/
-.wrapper .cross {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 40px;
-  height: 45px;
-  background: rgb(0, 0, 0);
-  font-size: 2em;
-  color: rgb(255, 255, 255);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 
-  border-bottom-left-radius: 10px;
-  cursor: pointer;
-  z-index: 1;
-}
 /*login section */
 .wrapper .form-box-login {
   width: 100%;
@@ -211,8 +194,8 @@ body {
   position: absolute;
   color: rgb(0, 0, 0);
   font-size: 30px;
-  top: 65px;
-  left: 3%;
+  top: 15px;
+  left: 1%;
   width: 50px;
   height: 50px;
   cursor: pointer;
@@ -220,18 +203,18 @@ body {
   text-align: center;
 }
 .bx-arrow-back:hover {
-  color: rgba(41, 41, 203, 0.877);
+  color:rgba(45,70,199,255);
 }
 
 .imgbg img{
   position: absolute;
-  left: 70px;
+  left: 80px;
   top: 70px;
   height: 500px;
   width: 500px;
   bottom: 10px;
 
-  z-index: 1;
+  z-index: 2;
 }
 .logo-heading {
   position: absolute;

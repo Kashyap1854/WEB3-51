@@ -1,0 +1,186 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@100&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 1000;
+}
+body {
+  min-height: 100vh;
+  background-color: rgb(231, 231, 231);
+  overflow: hidden;
+}
+
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
+}
+.logo-heading {
+  font-size: 2em;
+  font-weight: 900;
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  pointer-events: none;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-weight: 900;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.logo-heading span {
+  color: #143fb8;
+}
+.nav-items a {
+  position: relative;
+  font-weight: 500;
+  right: 160px;
+  margin-left: 40px;
+  cursor: pointer;
+  font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: black;
+  text-decoration: none;
+  justify-content: center;
+}
+.nav-items a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  top: 20px;
+  left: 0px;
+  background: rgb(0, 0, 0);
+  border-radius: 5px;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.5s;
+}
+
+.nav-items a:hover::after,
+.nav-items a.active {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.navbar .lg-btn {
+    position: absolute;
+    top: -10px;
+    left: px;
+  
+    margin-left: 0px;
+    width: 130px;
+    height: 50px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 1.1em;
+    color: rgb(28, 28, 193);
+    cursor: pointer;
+    background: transparent;
+    border: 2px solid rgb(28, 28, 193);
+    /*box-shadow: 10px 10px 10px black;*/
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+      "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+
+.navbar .lg-btn:hover {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgb(35, 26, 224) 0%,
+    rgb(75, 75, 255) 39%,
+    rgba(12, 117, 241, 1) 100%
+  );
+  color: white;
+  border: none;
+}
+.imgbg img {
+  position: absolute;
+  left: 50px;
+  top: 80px;
+  height: 480px;
+}
+/*---------------*/
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 150px;
+    margin-left:500px;
+    height: 300px;
+}
+
+.card {
+    display: none;
+    width: 400px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.454);
+    height: 350px;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-family: "Roboto", sans-serif;
+  font-size: 1.5em;
+}
+.card a{
+    font-size: 2em;
+    text-decoration: none;
+    text-align: center;
+    outline: none;
+    color: rgb(0, 0, 0);
+}
+.card a:hover{
+   
+    color: rgb(28, 28, 193);
+}
+.card .bx{
+    font-size: 1.8em;
+    color: rgb(0, 0, 0);
+    margin-bottom: 10px;
+    margin-left: 10px;
+
+}
+.card .bx:hover{
+    color: rgb(28, 28, 193);
+}
+.arrow-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.arrow-buttons button {
+    position: relative;
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    left: 250px;
+    margin-top: 20px;
+    background-color: white;
+    border:none;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.454);
+
+    cursor: pointer;
+}
+.arrow-buttons button:hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgb(35, 26, 224) 0%,
+      rgb(75, 75, 255) 39%,
+      rgba(12, 117, 241, 1) 100%
+    );
+    color: white;
+    border: none;
+  }
