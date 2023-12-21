@@ -72,14 +72,10 @@
           <div class="text">Upload File</div>
         </div>
         <input type="file" id="fileInput" multiple />
-        <input type="text" id="fileNameInput" placeholder="Enter File Name" />
-        <input type="date" id="dateFilter" placeholder="Filter by Date" />
-        <button onclick="uploadFiles()">Upload Files</button>
-        <button onclick="applyFilter()">Apply Filter</button>
-
-        <div id="fileList"></div>
-
-        <div id="file-preview"></div>
+       <input type="date" id="dateFilter" placeholder="Filter by Date" />
+       <button type="button" onclick="uploadFiles()">Upload Files</button>
+       <div id="output"></div>
+       
       </div>
     </div>
     <style>
@@ -372,121 +368,406 @@
       button:hover {
         background-color: #1a2c58;
       }
-
-      #fileList {
-        margin-top: 20px;
-        text-align: left;
+      #output{
+       margin-top:10px;
+       font-family: "Roboto", sans-serif;
       }
-
-      #file-preview {
-        margin-top: 20px;
-      }
-
-      .bx-filter {
-        font-size: 24px;
-        color: #274393;
-        margin-top: 20px;
-      }
+      
     </style>
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
     <script>
+    const web3 = new Web3("http://localhost:7545"); // Connect to Ganache or your Ethereum provider
+      const contractAddress = "0xA5b6bbae17D9155D9A3CA752D4Fc5c9E6dA1a34A"; // Replace with your contract address
+      const contractABI =  [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fileId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fileSize",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "FileAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fileId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fileSize",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "FileDeleted",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "fileCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileExists",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileSize",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileToId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileToOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "files",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "fileSize",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_ipfsHash",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_fileName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_fileSize",
+          "type": "uint256"
+        }
+      ],
+      "name": "addFile",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ];
+      const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+      document.addEventListener("DOMContentLoaded", async () => {
+            // Fetch and display existing files on page load
+            await displayExistingFiles();
+        });
+
+      async function pinFileToIPFS(formData) {
+        const JWT =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIzMDI2NWMxMi0yMDU0LTQ2YzctYTQzOC1jMWM1ZTg3YTI3MjUiLCJlbWFpbCI6Im1vaGl0aG4yMDA0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJlYmQ5Y2Q0OTI5MmY1OWJiMjllMiIsInNjb3BlZEtleVNlY3JldCI6ImFlYjAzYTczYWQxODliNjc0NzJhZTVjYWI1YzFiNmMyOTc1MTNiYTI2YjJlZGQyMmQ0MWY3ZGYyNGQ5MDQ4NDEiLCJpYXQiOjE3MDI3OTcyNjR9.AbwlNA9ENLHXCGWwp91pkoROQch70-5dElLs7fSuXSI";
+
+        try {
+          const res = await axios.post(
+            "https://api.pinata.cloud/pinning/pinFileToIPFS",
+            formData,
+            {
+              maxBodyLength: "Infinity",
+              headers: {
+                "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+                Authorization: `Bearer ${JWT}`,
+              },
+            }
+          );
+
+          return res.data.IpfsHash;
+        } catch (error) {
+          console.error("Error uploading file to IPFS:", error);
+          throw error;
+        }
+      }
+
       async function uploadFiles() {
         const fileInput = document.getElementById("fileInput");
-        const fileNameInput = document.getElementById("fileNameInput");
         const files = fileInput.files;
+        const outputDiv = document.getElementById("output");
 
-        if (files.length > 0) {
+        for (const file of files) {
           const formData = new FormData();
-          for (const file of files) {
-            formData.append("files", file);
-          }
+          formData.append("file", file);
 
-          formData.append("fileName", fileNameInput.value || "Untitled");
+          const pinataMetadata = JSON.stringify({
+            name: file.name,
+          });
+          formData.append("pinataMetadata", pinataMetadata);
+
+          const pinataOptions = JSON.stringify({
+            cidVersion: 0,
+          });
+          formData.append("pinataOptions", pinataOptions);
 
           try {
-            const res = await fetch("/upload", {
-              method: "POST",
-              body: formData,
+            const ipfsHash = await pinFileToIPFS(formData);
+            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+            const fileSizeWei = web3.utils.toWei(fileSizeMB, "ether");
+            const timestamp = new Date().toLocaleDateString("en-GB");
+
+            // Store file details on the blockchain
+            const accounts = await ethereum.request({
+              method: "eth_requestAccounts",
             });
+            const account = accounts[0];
 
-            if (res.ok) {
-              console.log("Files uploaded successfully.");
-              updateFileList(); 
-            } else {
-              console.error("Failed to upload files.");
-            }
+            await contract.methods
+              .addFile(ipfsHash, file.name, fileSizeWei)
+              .send({ from: account, gas: 5000000 });
+
+            // Display information with a clickable link in the output div
+            outputDiv.innerHTML += `
+            <div class="file-detail">
+              <p>File Name: ${file.name}</p>
+              <p>IPFS Hash: ${ipfsHash}</p>
+              <p>File Size: ${fileSizeMB} MB</p>
+              <p class="timestamp">Timestamp: ${timestamp}</p>
+              <hr>
+            </div>
+          `;
           } catch (error) {
-            console.error("Error uploading files:", error);
+            // Handle errors as needed
+            console.error(
+              "Error uploading file to IPFS or storing on the blockchain:",
+              error
+            );
           }
-        } else {
-          console.log("No files selected.");
-        }
-      }
-
-      function bytesToMB(bytes) {
-        return (bytes / (1024 * 1024)).toFixed(2) + " MB";
-      }
-
-      function formatDate(timestamp) {
-        const date = new Date(timestamp);
-        const day = date.getDate().toString().padStart(2, "0");
-        const month = (date.getMonth() + 1).toString().padStart(2, "0");
-        const year = date.getFullYear();
-        return `${day}-${month}-${year}`;
-      }
-
-      async function updateFileList() {
-        const response = await fetch("/getFilePaths");
-        const fileList = await response.json();
-
-        const fileListContainer = document.getElementById("fileList");
-        fileListContainer.innerHTML = "";
-
-        const dateFilter = document.getElementById("dateFilter").value;
-        const filteredFiles = fileList.filter((file) => {
-          const fileDate = new Date(file.timestamp).toISOString().split("T")[0];
-          return dateFilter === "" || fileDate === dateFilter;
-        });
-
-        if (filteredFiles.length === 0) {
-          fileListContainer.innerHTML =
-            "<p>No files uploaded on the selected date.</p>";
-          return;
         }
 
-        filteredFiles.forEach((file) => {
-          const fileItem = document.createElement("div");
-          fileItem.classList.add("file-item");
-          fileItem.innerHTML = `
-                    <img src="file-icon.png" alt="File Icon" class="file-icon">
-                    <span>File Name: ${file.name}</span>
-                    <span>IPFS Hash: ${file.ipfsHash}</span>
-                    <span>Timestamp: ${formatDate(file.timestamp)}</span>
-                    <span>File Size: ${bytesToMB(file.size)}</span>
-                `;
-
-          fileItem.addEventListener("mouseover", () => {
-            showFilePreview(file);
-          });
-
-          fileItem.addEventListener("mouseout", () => {
-            hideFilePreview();
-          });
-
-          const fileLink = document.createElement("a");
-          const GatewayAPIKey =
-            "NfZXt4Zb2vvSoBVST7_ISlfco2X696nnoCEt9t3yv4mHACHxiCnHINOvtbX4SlX5";
-          fileLink.href = `https://purple-blank-reptile-398.mypinata.cloud/ipfs/${file.ipfsHash}?pinataGatewayToken=${GatewayAPIKey}`;
-          fileLink.target = "_blank";
-          fileLink.appendChild(fileItem);
-
-          fileListContainer.appendChild(fileLink);
-        });
-      }
-      function applyFilter() {
-        updateFileList();
+        // After successfully uploading, fetch and display existing files
+        await displayExistingFiles();
       }
 
+      async function displayExistingFiles() {
+        const outputDiv = document.getElementById("output");
+        outputDiv.innerHTML = ""; // Clear existing content
+
+        // Get the total number of files from the contract
+        const fileCount = await contract.methods.fileCount().call();
+
+        // Iterate through each file and display it
+        for (let i = 1; i <= fileCount; i++) {
+            const fileDetails = await contract.methods.files(i).call();
+            const ipfsHash = fileDetails.ipfsHash;
+            const fileName = fileDetails.fileName;
+            const fileSizeMB = web3.utils.fromWei(fileDetails.fileSize, "ether");
+            const timestamp = new Date(parseInt(fileDetails.timestamp) * 1000).toLocaleDateString("en-GB");
+
+            // Assign a unique identifier to each block
+            const blockId = `fileBlock_${ipfsHash}`;
+
+            // Display information with a clickable link in the output div
+            outputDiv.innerHTML += `
+                <div id="${blockId}" class="file-detail">
+                    <p>File Name: ${fileName}</p>
+                    <p>IPFS Hash: ${ipfsHash}</p>
+                    <p>File Size: ${fileSizeMB} MB</p>
+                    <p class="timestamp">Timestamp: ${timestamp}</p>
+                    <hr>
+                </div>
+            `;
+        }
+    }
+
+/*---------------------------------------*/
       let btn = document.querySelector("#btn");
       let sidebar = document.querySelector(".sidebar");
       let searchBtn = document.querySelector(".bx-search");
