@@ -1,720 +1,762 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MedVault | Home</title>
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="logo-heading">
-      <a><span>Med</span>Vault</a>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedVault | Home</title>
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="logo-heading">
+    <a><span>Med</span>Vault</a>
+  </div>
+
+  <div class="sidebar">
+    <div class="content">
+
+
+      <i class="bx bx-menu" id="btn"></i>
     </div>
 
-    <div class="sidebar">
-      <div class="content">
-     
+    <ul class="list">
 
-        <i class="bx bx-menu" id="btn"></i>
+
+      <li class="list-item active">
+        <a href="#" class="list-link">
+          <i class="bx bxs-dashboard"></i>
+          <span class="link-name">Dashboard</span>
+        </a>
+        <span class="badge">Dashboard</span>
+      </li>
+      <li class="list-item">
+        <a href="profile.html" class="list-link">
+          <i class="bx bx-user"></i>
+          <span class="link-name">User</span>
+        </a>
+        <span class="badge">User</span>
+      </li>
+      <li class="list-item">
+        <a href="note.html" class="list-link">
+          <i class="bx bx-file-blank"></i>
+          <span class="link-name">Note</span>
+        </a>
+        <span class="badge">Note</span>
+      </li>
+
+    </ul>
+    <ul class="list-logout">
+      <li>
+        <a href="#" class="list-link">
+          <form action="{{url_for('logout')}}" method="post"
+            onSubmit="if(!confirm('Do you want to log out .')){return false;}">
+            <i class="bx bx-log-out"><input type="submit" /></i>
+          </form>
+          <span class="link-name">Log Out</span>
+          <span class="badge">Log Out</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!------------------>
+
+  <div class="upload-container">
+    <div class="wrapper">
+      <div class="wrap">
+        <div class="icon"><i class="bx bxs-cloud-upload"></i></div>
+        <div class="text">Upload File</div>
       </div>
-
-      <ul class="list">
-        
-
-        <li class="list-item active">
-          <a href="#" class="list-link">
-            <i class="bx bxs-dashboard"></i>
-            <span class="link-name">Dashboard</span>
-          </a>
-          <span class="badge">Dashboard</span>
-        </li>
-        <li class="list-item">
-          <a href="profile.html" class="list-link">
-            <i class="bx bx-user"></i>
-            <span class="link-name">User</span>
-          </a>
-          <span class="badge">User</span>
-        </li>
-        <li class="list-item">
-          <a href="note.html" class="list-link">
-            <i class="bx bx-file-blank"></i>
-            <span class="link-name">Note</span>
-          </a>
-          <span class="badge">Note</span>
-        </li>
-        
-      </ul>
-      <ul class="list-logout">
-        <li>
-          <a href="#" class="list-link">
-            <form
-              action="{{url_for('logout')}}"
-              method="post"
-              onSubmit="if(!confirm('Do you want to log out .')){return false;}"
-            >
-              <i class="bx bx-log-out"><input type="submit" /></i>
-            </form>
-            <span class="link-name">Log Out</span>
-            <span class="badge">Log Out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <!------------------>
-    <div class="upload-container">
-      <div class="wrapper">
-        <div class="wrap">
-          <div class="icon"><i class="bx bxs-cloud-upload"></i></div>
-          <div class="text">Upload File</div>
-        </div>
-        <input type="file" id="fileInput" multiple />
-       <input type="date" id="dateFilter" placeholder="Filter by Date" />
-       <button type="button" onclick="uploadFiles()">Upload Files</button>
-       <div id="output"></div>
-       
+      <input type="file" id="fileInput" multiple />
+      <input type="date" id="dateFilter" placeholder="Filter by Date" />
+      <button type="button" onclick="uploadFiles()">Upload Files</button>
+      <div class="search-container">
+        <input type="text" id="fileSearch" placeholder="Search by File Name" />
+        <button type="button" onclick="searchFiles()">Search</button>
       </div>
-    </div>
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@100&display=swap");
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        margin: 0;
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 100vh;
-        font-family: "Roboto", sans-serif;
-        background-color: rgb(231, 231, 231);
-      }
-      .logo-heading {
-        position: fixed;
-        font-size: 2em;
-        text-decoration: none;
-        color: rgb(0, 0, 0);
-        pointer-events: none;
-        font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-          "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-        left: 110px;
-        font-weight: 900;
-        top: 25px;
-        margin-bottom: 10px;
-        cursor: pointer;
-      }
-      .logo-heading span {
-        color: #143fb8;
-      }
-
-      .sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100px;
-        height: 100%;
-        background: rgba(45, 70, 199, 255);
-        padding: 30px 14px;
-        z-index: 100;
-        transition: all 0.5s ease-in-out;
-      }
-
-      .sidebar.active {
-        width: 210px;
-        overflow: hidden;
-      }
-
-      .sidebar #btn {
-        position: absolute;
-        top: 20px;
-        left: 45%;
-        font-size: 40px;
-        transform: translate(-50%);
-        width: 50px;
-        height: 50px;
-        text-align: center;
-        line-height: 50px;
-        color: white;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .sidebar.active #btn {
-        left: 90%;
-        top: 0px;
-        background: rgba(26, 43, 130, 255);
-        color: white;
-        transition-delay: 0.1s;
-        font-weight: 900;
-        border-bottom-left-radius: 8px;
-      }
-      .sidebar ul {
-        margin-top: 20px;
-      }
-
-      .sidebar ul li {
-        position: relative;
-        list-style: none;
-        height: 50px;
-        width: 100%;
-        margin: 80px 0;
-        line-height: 50px;
-        border-radius: 15px;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .sidebar ul li input {
-        position: absolute;
-        margin-top: 10px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        cursor: pointer;
-        border-radius: 6px;
-        background: transparent;
-        border: none;
-        outline: none;
-        opacity: 0;
-        padding-left: 50px;
-        color: white;
-      }
-
-      .sidebar.active ul li input {
-        padding: 0 10px 0 50px;
-        opacity: 1;
-      }
-
-      .sidebar ul li a {
-        position: relative;
-        display: flex;
-        color: white;
-        align-items: center;
-        font-weight: 900;
-        height: 100%;
-        margin-top: 0px;
-        white-space: nowrap;
-        width: 100%;
-        line-height: 50px;
-        border-radius: 6px;
-        text-decoration: none;
-        transition: all 0.3s ease;
-      }
-
-      .sidebar ul li a:hover {
-        background: rgba(26, 43, 130, 255);
-        color: white;
-        transition-delay: 0.1s;
-        font-weight: 900;
-        align-content: center;
-        border-radius: 6px;
-      }
-
-      .sidebar ul li i {
-        height: 50px;
-        min-width: 50px;
-        margin-left: 5px;
-        font-size: 35px;
-        text-align: center;
-        align-items: center;
-        line-height: 50px;
-        border-radius: 6px;
-      }
-
-      .sidebar.active ul li i {
-        font-size: 25px;
-        margin-right: 15px;
-      }
-
-      .sidebar ul li .link-name {
-        opacity: 0;
-
-        pointer-events: none;
-        transition: opacity 0.5s ease-in-out;
-      }
-
-      .sidebar.active ul li .link-name {
-        opacity: 1;
-        transition-delay: 0.2s;
-        font-size: 20px;
-        pointer-events: auto;
-      }
-
-      .sidebar .list-logout {
-        position: absolute;
-        bottom: 80px;
-        margin: 15px 0;
-        width: 100%;
-        white-space: nowrap;
-        height: 50px;
-        padding-right: 30px;
-        border-radius: 6px;
-        transition: all 0.3s ease-in-out;
-      }
-
-      .sidebar.active .list-logout {
-        width: 100%;
-        padding-right: 30px;
-      }
-      .sidebar.active .list-logout .list-link input {
-        display: none;
-      }
-
-      .sidebar ul li .badge {
-        position: absolute;
-        top: 0;
-        left: 160px;
-        transform: translate(-50%, -50%);
-        width: 140px;
-        height: 35px;
-        background: #274393;
-        color: white;
-        border-radius: 6px;
-        font-size: 16px;
-        line-height: 35px;
-        text-align: center;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        pointer-events: none;
-        opacity: 0;
-        transition: 0.5s ease;
-      }
-
-      .sidebar ul li:hover .badge {
-        opacity: 1;
-        transition: 0.5s ease;
-        top: 50%;
-      }
-      .sidebar.active ul li .badge {
-        display: none;
-      }
-      /******************/
-      /* home items */
-
-      .upload-container {
-        position: relative;
-        max-width: 900px;
-        width: 100%;
-        margin: 0px auto;
-        top: 20px;
-        left:50px;
-        text-align: center;
-        background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .wrapper {
-        padding: 20px;
-      }
-
-      .wrap {
-        border: 2px dashed #274393;
-        height: 120px;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        cursor: pointer;
-        transition: border 0.3s;
-      }
-
-      .wrap:hover {
-        border-color: #1a2c58;
-      }
-
-      .wrap .icon {
-        font-size: 48px;
-        color: #274393;
-        margin-bottom: 10px;
-      }
-
-      .wrap .text {
-        font-size: 16px;
-        color: #274393;
-        margin: 0;
-      }
-
-      #fileInput,
-      #fileNameInput,
-      #dateFilter {
-        margin-top: 15px;
-        padding: 8px;
-        width: 100%;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-      }
-
-      button {
-        margin-top: 15px;
-        padding: 10px 20px;
-        background-color: #274393;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-      }
-
-      button:hover {
-        background-color: #1a2c58;
-      }
-      #output{
-       margin-top:10px;
-       font-family: "Roboto", sans-serif;
-      }
       
-    </style>
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
-    <script>
-    const web3 = new Web3("http://localhost:7545"); // Connect to Ganache or your Ethereum provider
-      const contractAddress = "0xA5b6bbae17D9155D9A3CA752D4Fc5c9E6dA1a34A"; // Replace with your contract address
-      const contractABI =  [
-    {
-      "inputs": [],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "fileId",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "string",
-          "name": "ipfsHash",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "internalType": "string",
-          "name": "fileName",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "fileSize",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "name": "FileAdded",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "fileId",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "string",
-          "name": "ipfsHash",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "internalType": "string",
-          "name": "fileName",
-          "type": "string"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "fileSize",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "name": "FileDeleted",
-      "type": "event"
-    },
-    {
-      "inputs": [],
-      "name": "fileCount",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "name": "fileExists",
-      "outputs": [
-        {
-          "internalType": "bool",
-          "name": "",
-          "type": "bool"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "name": "fileName",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "name": "fileSize",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "name": "fileToId",
-      "outputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "",
-          "type": "string"
-        }
-      ],
-      "name": "fileToOwner",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "uint256",
-          "name": "",
-          "type": "uint256"
-        }
-      ],
-      "name": "files",
-      "outputs": [
-        {
-          "internalType": "string",
-          "name": "ipfsHash",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "fileName",
-          "type": "string"
-        },
-        {
-          "internalType": "uint256",
-          "name": "fileSize",
-          "type": "uint256"
-        },
-        {
-          "internalType": "uint256",
-          "name": "timestamp",
-          "type": "uint256"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [],
-      "name": "owner",
-      "outputs": [
-        {
-          "internalType": "address",
-          "name": "",
-          "type": "address"
-        }
-      ],
-      "stateMutability": "view",
-      "type": "function",
-      "constant": true
-    },
-    {
-      "inputs": [
-        {
-          "internalType": "string",
-          "name": "_ipfsHash",
-          "type": "string"
-        },
-        {
-          "internalType": "string",
-          "name": "_fileName",
-          "type": "string"
-        },
-        {
-          "internalType": "uint256",
-          "name": "_fileSize",
-          "type": "uint256"
-        }
-      ],
-      "name": "addFile",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
+      <div id="output"></div>
+    </div>
+  </div>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Roboto:wght@100&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-  ];
-      const contract = new web3.eth.Contract(contractABI, contractAddress);
 
-      document.addEventListener("DOMContentLoaded", async () => {
-            // Fetch and display existing files on page load
-            await displayExistingFiles();
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      font-family: "Roboto", sans-serif;
+      background-color: rgb(231, 231, 231);
+    }
+
+    .logo-heading {
+      position: fixed;
+      font-size: 2em;
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+      pointer-events: none;
+      font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+      left: 110px;
+      font-weight: 900;
+      top: 25px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .logo-heading span {
+      color: #143fb8;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100%;
+      background: rgba(45, 70, 199, 255);
+      padding: 30px 14px;
+      z-index: 100;
+      transition: all 0.5s ease-in-out;
+    }
+
+    .sidebar.active {
+      width: 210px;
+      overflow: hidden;
+    }
+
+    .sidebar #btn {
+      position: absolute;
+      top: 20px;
+      left: 45%;
+      font-size: 40px;
+      transform: translate(-50%);
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 50px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar.active #btn {
+      left: 90%;
+      top: 0px;
+      background: rgba(26, 43, 130, 255);
+      color: white;
+      transition-delay: 0.1s;
+      font-weight: 900;
+      border-bottom-left-radius: 8px;
+    }
+
+    .sidebar ul {
+      margin-top: 20px;
+    }
+
+    .sidebar ul li {
+      position: relative;
+      list-style: none;
+      height: 50px;
+      width: 100%;
+      margin: 80px 0;
+      line-height: 50px;
+      border-radius: 15px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar ul li input {
+      position: absolute;
+      margin-top: 10px;
+      left: 0px;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      border-radius: 6px;
+      background: transparent;
+      border: none;
+      outline: none;
+      opacity: 0;
+      padding-left: 50px;
+      color: white;
+    }
+
+    .sidebar.active ul li input {
+      padding: 0 10px 0 50px;
+      opacity: 1;
+    }
+
+    .sidebar ul li a {
+      position: relative;
+      display: flex;
+      color: white;
+      align-items: center;
+      font-weight: 900;
+      height: 100%;
+      margin-top: 0px;
+      white-space: nowrap;
+      width: 100%;
+      line-height: 50px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .sidebar ul li a:hover {
+      background: rgba(26, 43, 130, 255);
+      color: white;
+      transition-delay: 0.1s;
+      font-weight: 900;
+      align-content: center;
+      border-radius: 6px;
+    }
+
+    .sidebar ul li i {
+      height: 50px;
+      min-width: 50px;
+      margin-left: 5px;
+      font-size: 35px;
+      text-align: center;
+      align-items: center;
+      line-height: 50px;
+      border-radius: 6px;
+    }
+
+    .sidebar.active ul li i {
+      font-size: 25px;
+      margin-right: 15px;
+    }
+
+    .sidebar ul li .link-name {
+      opacity: 0;
+
+      pointer-events: none;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .sidebar.active ul li .link-name {
+      opacity: 1;
+      transition-delay: 0.2s;
+      font-size: 20px;
+      pointer-events: auto;
+    }
+
+    .sidebar .list-logout {
+      position: absolute;
+      bottom: 80px;
+      margin: 15px 0;
+      width: 100%;
+      white-space: nowrap;
+      height: 50px;
+      padding-right: 30px;
+      border-radius: 6px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .sidebar.active .list-logout {
+      width: 100%;
+      padding-right: 30px;
+    }
+
+    .sidebar.active .list-logout .list-link input {
+      display: none;
+    }
+
+    .sidebar ul li .badge {
+      position: absolute;
+      top: 0;
+      left: 160px;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      height: 35px;
+      background: #274393;
+      color: white;
+      border-radius: 6px;
+      font-size: 16px;
+      line-height: 35px;
+      text-align: center;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      pointer-events: none;
+      opacity: 0;
+      transition: 0.5s ease;
+    }
+
+    .sidebar ul li:hover .badge {
+      opacity: 1;
+      transition: 0.5s ease;
+      top: 50%;
+    }
+
+    .sidebar.active ul li .badge {
+      display: none;
+    }
+
+    /******************/
+    /* home items */
+
+    .upload-container {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      margin: 0px auto;
+      top: 20px;
+      left: 50px;
+      text-align: center;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .wrapper {
+      padding: 20px;
+    }
+
+    .wrap {
+      border: 2px dashed #274393;
+      height: 120px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      cursor: pointer;
+      transition: border 0.3s;
+    }
+
+    .wrap:hover {
+      border-color: #1a2c58;
+    }
+
+    .wrap .icon {
+      font-size: 48px;
+      color: #274393;
+      margin-bottom: 10px;
+    }
+
+    .wrap .text {
+      font-size: 16px;
+      color: #274393;
+      margin: 0;
+    }
+
+    #fileInput,
+    #fileNameInput,
+    #dateFilter {
+      margin-top: 15px;
+      padding: 8px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #274393;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #1a2c58;
+    }
+
+    #output {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      font-family: "Roboto", sans-serif;
+      text-align: left;
+      font-weight: 1000;
+    }
+
+    .search-container {
+      margin-left:300px;
+      display: flex;
+      margin-top: 20px;
+    }
+
+    .search-container input[type=text] {
+      padding: 8px;
+      margin-right:10px;
+      border: 1px solid #cccccc86;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: "Roboto", sans-serif;
+
+      font-weight: 1000;
+    }
+
+    .search-container button {
+      margin-top: 5px;
+      padding: 10px 20px;
+      background-color: #274393;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .search-container button:hover {
+      background-color: #1a2c58;
+    }
+  </style>
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
+  <script>
+    const web3 = new Web3("http://localhost:7545");
+    const contractAddress = "0xA5b6bbae17D9155D9A3CA752D4Fc5c9E6dA1a34A";
+    const contractABI = [
+      {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "fileId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "ipfsHash",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "fileName",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "fileSize",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          }
+        ],
+        "name": "FileAdded",
+        "type": "event"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "fileId",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "ipfsHash",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "string",
+            "name": "fileName",
+            "type": "string"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "fileSize",
+            "type": "uint256"
+          },
+          {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          }
+        ],
+        "name": "FileDeleted",
+        "type": "event"
+      },
+      {
+        "inputs": [],
+        "name": "fileCount",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "name": "fileExists",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "name": "fileName",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "name": "fileSize",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "name": "fileToId",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          }
+        ],
+        "name": "fileToOwner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "name": "files",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "ipfsHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "fileName",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "fileSize",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "timestamp",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [],
+        "name": "owner",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function",
+        "constant": true
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "_ipfsHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_fileName",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_fileSize",
+            "type": "uint256"
+          }
+        ],
+        "name": "addFile",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      }
+    ];
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+    document.addEventListener("DOMContentLoaded", async () => {
+      
+      await displayExistingFiles();
+    });
+
+    async function pinFileToIPFS(formData) {
+      const JWT =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIzMDI2NWMxMi0yMDU0LTQ2YzctYTQzOC1jMWM1ZTg3YTI3MjUiLCJlbWFpbCI6Im1vaGl0aG4yMDA0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJlYmQ5Y2Q0OTI5MmY1OWJiMjllMiIsInNjb3BlZEtleVNlY3JldCI6ImFlYjAzYTczYWQxODliNjc0NzJhZTVjYWI1YzFiNmMyOTc1MTNiYTI2YjJlZGQyMmQ0MWY3ZGYyNGQ5MDQ4NDEiLCJpYXQiOjE3MDI3OTcyNjR9.AbwlNA9ENLHXCGWwp91pkoROQch70-5dElLs7fSuXSI";
+
+      try {
+        const res = await axios.post(
+          "https://api.pinata.cloud/pinning/pinFileToIPFS",
+          formData,
+          {
+            maxBodyLength: "Infinity",
+            headers: {
+              "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+              Authorization: `Bearer ${JWT}`,
+            },
+          }
+        );
+
+        return res.data.IpfsHash;
+      } catch (error) {
+        console.error("Error uploading file to IPFS:", error);
+        throw error;
+      }
+    }
+
+    async function uploadFiles() {
+      const fileInput = document.getElementById("fileInput");
+      const files = fileInput.files;
+      const outputDiv = document.getElementById("output");
+
+      for (const file of files) {
+        const formData = new FormData();
+        formData.append("file", file);
+
+        const pinataMetadata = JSON.stringify({
+          name: file.name,
         });
+        formData.append("pinataMetadata", pinataMetadata);
 
-      async function pinFileToIPFS(formData) {
-        const JWT =
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiIzMDI2NWMxMi0yMDU0LTQ2YzctYTQzOC1jMWM1ZTg3YTI3MjUiLCJlbWFpbCI6Im1vaGl0aG4yMDA0QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfSx7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJlYmQ5Y2Q0OTI5MmY1OWJiMjllMiIsInNjb3BlZEtleVNlY3JldCI6ImFlYjAzYTczYWQxODliNjc0NzJhZTVjYWI1YzFiNmMyOTc1MTNiYTI2YjJlZGQyMmQ0MWY3ZGYyNGQ5MDQ4NDEiLCJpYXQiOjE3MDI3OTcyNjR9.AbwlNA9ENLHXCGWwp91pkoROQch70-5dElLs7fSuXSI";
+        const pinataOptions = JSON.stringify({
+          cidVersion: 0,
+        });
+        formData.append("pinataOptions", pinataOptions);
 
         try {
-          const res = await axios.post(
-            "https://api.pinata.cloud/pinning/pinFileToIPFS",
-            formData,
-            {
-              maxBodyLength: "Infinity",
-              headers: {
-                "Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-                Authorization: `Bearer ${JWT}`,
-              },
-            }
-          );
+          const ipfsHash = await pinFileToIPFS(formData);
+          const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
+          const fileSizeWei = web3.utils.toWei(fileSizeMB, "ether");
+          const timestamp = new Date().toLocaleDateString("en-GB");
 
-          return res.data.IpfsHash;
-        } catch (error) {
-          console.error("Error uploading file to IPFS:", error);
-          throw error;
-        }
-      }
-
-      async function uploadFiles() {
-        const fileInput = document.getElementById("fileInput");
-        const files = fileInput.files;
-        const outputDiv = document.getElementById("output");
-
-        for (const file of files) {
-          const formData = new FormData();
-          formData.append("file", file);
-
-          const pinataMetadata = JSON.stringify({
-            name: file.name,
+          const accounts = await ethereum.request({
+            method: "eth_requestAccounts",
           });
-          formData.append("pinataMetadata", pinataMetadata);
+          const account = accounts[0];
 
-          const pinataOptions = JSON.stringify({
-            cidVersion: 0,
-          });
-          formData.append("pinataOptions", pinataOptions);
+          await contract.methods
+            .addFile(ipfsHash, file.name, fileSizeWei)
+            .send({ from: account, gas: 5000000 });
 
-          try {
-            const ipfsHash = await pinFileToIPFS(formData);
-            const fileSizeMB = (file.size / (1024 * 1024)).toFixed(2);
-            const fileSizeWei = web3.utils.toWei(fileSizeMB, "ether");
-            const timestamp = new Date().toLocaleDateString("en-GB");
-
-            // Store file details on the blockchain
-            const accounts = await ethereum.request({
-              method: "eth_requestAccounts",
-            });
-            const account = accounts[0];
-
-            await contract.methods
-              .addFile(ipfsHash, file.name, fileSizeWei)
-              .send({ from: account, gas: 5000000 });
-
-            // Display information with a clickable link in the output div
-            outputDiv.innerHTML += `
+         
+          outputDiv.innerHTML += `
             <div class="file-detail">
               <p>File Name: ${file.name}</p>
               <p>IPFS Hash: ${ipfsHash}</p>
@@ -723,39 +765,38 @@
               <hr>
             </div>
           `;
-          } catch (error) {
-            // Handle errors as needed
-            console.error(
-              "Error uploading file to IPFS or storing on the blockchain:",
-              error
-            );
-          }
+        } catch (error) {
+        
+          console.error(
+            "Error uploading file to IPFS or storing on the blockchain:",
+            error
+          );
         }
-
-        // After successfully uploading, fetch and display existing files
-        await displayExistingFiles();
       }
 
-      async function displayExistingFiles() {
-        const outputDiv = document.getElementById("output");
-        outputDiv.innerHTML = ""; // Clear existing content
+    
+      await displayExistingFiles();
+    }
 
-        // Get the total number of files from the contract
-        const fileCount = await contract.methods.fileCount().call();
+    async function displayExistingFiles() {
+      const outputDiv = document.getElementById("output");
+      outputDiv.innerHTML = ""; 
 
-        // Iterate through each file and display it
-        for (let i = 1; i <= fileCount; i++) {
-            const fileDetails = await contract.methods.files(i).call();
-            const ipfsHash = fileDetails.ipfsHash;
-            const fileName = fileDetails.fileName;
-            const fileSizeMB = web3.utils.fromWei(fileDetails.fileSize, "ether");
-            const timestamp = new Date(parseInt(fileDetails.timestamp) * 1000).toLocaleDateString("en-GB");
+     
+      const fileCount = await contract.methods.fileCount().call();
 
-            // Assign a unique identifier to each block
-            const blockId = `fileBlock_${ipfsHash}`;
+      for (let i = 1; i <= fileCount; i++) {
+        const fileDetails = await contract.methods.files(i).call();
+        const ipfsHash = fileDetails.ipfsHash;
+        const fileName = fileDetails.fileName;
+        const fileSizeMB = web3.utils.fromWei(fileDetails.fileSize, "ether");
+        const timestamp = new Date(parseInt(fileDetails.timestamp) * 1000).toLocaleDateString("en-GB");
 
-            // Display information with a clickable link in the output div
-            outputDiv.innerHTML += `
+        
+        const blockId = `fileBlock_${ipfsHash}`;
+
+        
+        outputDiv.innerHTML += `
                 <div id="${blockId}" class="file-detail">
                     <p>File Name: ${fileName}</p>
                     <p>IPFS Hash: ${ipfsHash}</p>
@@ -764,64 +805,85 @@
                     <hr>
                 </div>
             `;
-        }
+      }
     }
 
-/*---------------------------------------*/
-      let btn = document.querySelector("#btn");
-      let sidebar = document.querySelector(".sidebar");
-      let searchBtn = document.querySelector(".bx-search");
-      let listitem = document.querySelectorAll(".list-item");
-      btn.onclick = function () {
-        sidebar.classList.toggle("active");
-      };
+    /*---------------------------------------*/
+    let btn = document.querySelector("#btn");
+    let sidebar = document.querySelector(".sidebar");
+    let searchBtn = document.querySelector(".bx-search");
+    let listitem = document.querySelectorAll(".list-item");
+    btn.onclick = function () {
+      sidebar.classList.toggle("active");
+    };
 
-      searchBtn.onclick = function () {
-        sidebar.classList.toggle("active");
-      };
+    searchBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+    };
 
-      function activeLink() {
-        listitem.forEach((item) => item.classList.remove("active"));
-        this.classList.add("active");
+    function activeLink() {
+      listitem.forEach((item) => item.classList.remove("active"));
+      this.classList.add("active");
+    }
+    listitem.forEach((item) => (item.onclick = activeLink));
+/*8888888*/
+    function searchFiles() {
+  var input, filter, output, div, files, i, txtValue;
+  input = document.getElementById("fileSearch");
+  filter = input.value.toUpperCase();
+  output = document.getElementById("output");
+  div = output.getElementsByTagName("div");
+
+  for (i = 0; i < div.length; i++) {
+    files = div[i].getElementsByTagName("p")[0];
+    txtValue = files.textContent || files.innerText;
+    
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      div[i].style.display = "";
+    } else {
+      div[i].style.display = "none";
+    }
+  }
+}
+/*...............*/
+    function previewFiles() {
+      const previewContainer = document.getElementById("file-preview");
+      const filesInput = document.getElementById("file-input");
+      const files = filesInput.files;
+
+      previewContainer.innerHTML = "";
+
+      for (const file of files) {
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+          const fileItem = document.createElement("div");
+          fileItem.classList.add("file-item");
+
+          if (file.type.includes("image")) {
+            const img = document.createElement("img");
+            img.src = e.target.result;
+            fileItem.appendChild(img);
+          } else {
+            const defaultImageSrc = "https://via.placeholder.com/150";
+            const img = document.createElement("img");
+            img.src = defaultImageSrc;
+            fileItem.appendChild(img);
+          }
+
+          const fileName = document.createElement("div");
+          fileName.classList.add("file-name");
+          fileName.textContent = file.name;
+
+          fileItem.appendChild(fileName);
+          previewContainer.appendChild(fileItem);
+        };
+
+        reader.readAsDataURL(file);
       }
-      listitem.forEach((item) => (item.onclick = activeLink));
-      
-      function previewFiles() {
-        const previewContainer = document.getElementById("file-preview");
-        const filesInput = document.getElementById("file-input");
-        const files = filesInput.files;
+    }
 
-        previewContainer.innerHTML = "";
+  </script>
+</body>
 
-        for (const file of files) {
-          const reader = new FileReader();
-
-          reader.onload = function (e) {
-            const fileItem = document.createElement("div");
-            fileItem.classList.add("file-item");
-
-            if (file.type.includes("image")) {
-              const img = document.createElement("img");
-              img.src = e.target.result;
-              fileItem.appendChild(img);
-            } else {
-              const defaultImageSrc = "https://via.placeholder.com/150";
-              const img = document.createElement("img");
-              img.src = defaultImageSrc;
-              fileItem.appendChild(img);
-            }
-
-            const fileName = document.createElement("div");
-            fileName.classList.add("file-name");
-            fileName.textContent = file.name;
-
-            fileItem.appendChild(fileName);
-            previewContainer.appendChild(fileItem);
-          };
-
-          reader.readAsDataURL(file);
-        }
-      }
-    </script>
-  </body>
 </html>
