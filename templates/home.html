@@ -20,10 +20,10 @@
           <a><span>Med</span>Vault</a>
         </div>
         <div class="nav-items">
-          <a href="#" class="active">HOME</a>
-          <a href="../templates/about.html">ABOUT US</a>
-          <a href="../templates/contact.html">CONTACT US</a>
-          <a href="../templates/login.html" method="POST">
+          <a href="{{url_for('home')}}" class="active">HOME</a>
+          <a href="{{url_for('about')}}">ABOUT US</a>
+          <a href="{{url_for('contact')}}">CONTACT US</a>
+          <a href="{{url_for('login')}}" method="POST">
             <button class="lg-btn">LOGIN</button>
           </a>
         </div>

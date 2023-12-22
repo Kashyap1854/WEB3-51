@@ -25,21 +25,21 @@
 
 
       <li class="list-item active">
-        <a href="#" class="list-link">
+        <a href="{{url_for('dashboard')}}" class="list-link">
           <i class="bx bxs-dashboard"></i>
           <span class="link-name">Dashboard</span>
         </a>
         <span class="badge">Dashboard</span>
       </li>
       <li class="list-item">
-        <a href="profile.html" class="list-link">
+        <a href="{{url_for('profile')}}" class="list-link">
           <i class="bx bx-user"></i>
           <span class="link-name">User</span>
         </a>
         <span class="badge">User</span>
       </li>
       <li class="list-item">
-        <a href="note.html" class="list-link">
+        <a href= "{{url_for('note')}}" class="list-link">
           <i class="bx bx-file-blank"></i>
           <span class="link-name">Note</span>
         </a>
@@ -101,7 +101,7 @@
     }
 
     .logo-heading {
-      position: fixed;
+      position:fixed;
       font-size: 2em;
       text-decoration: none;
       color: rgb(0, 0, 0);
@@ -422,274 +422,274 @@
   <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
   <script>
     const web3 = new Web3("http://localhost:7545");
-    const contractAddress = "0xA5b6bbae17D9155D9A3CA752D4Fc5c9E6dA1a34A";
+    const contractAddress = "0xBeC9aF61d04906B848E8e5565934de7CA98345E5";
     const contractABI = [
-      {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "fileId",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "string",
-            "name": "ipfsHash",
-            "type": "string"
-          },
-          {
-            "indexed": false,
-            "internalType": "string",
-            "name": "fileName",
-            "type": "string"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "fileSize",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "timestamp",
-            "type": "uint256"
-          }
-        ],
-        "name": "FileAdded",
-        "type": "event"
-      },
-      {
-        "anonymous": false,
-        "inputs": [
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "fileId",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "string",
-            "name": "ipfsHash",
-            "type": "string"
-          },
-          {
-            "indexed": false,
-            "internalType": "string",
-            "name": "fileName",
-            "type": "string"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "fileSize",
-            "type": "uint256"
-          },
-          {
-            "indexed": false,
-            "internalType": "uint256",
-            "name": "timestamp",
-            "type": "uint256"
-          }
-        ],
-        "name": "FileDeleted",
-        "type": "event"
-      },
-      {
-        "inputs": [],
-        "name": "fileCount",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "name": "fileExists",
-        "outputs": [
-          {
-            "internalType": "bool",
-            "name": "",
-            "type": "bool"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "name": "fileName",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "name": "fileSize",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "name": "fileToId",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "",
-            "type": "string"
-          }
-        ],
-        "name": "fileToOwner",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "name": "files",
-        "outputs": [
-          {
-            "internalType": "string",
-            "name": "ipfsHash",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "fileName",
-            "type": "string"
-          },
-          {
-            "internalType": "uint256",
-            "name": "fileSize",
-            "type": "uint256"
-          },
-          {
-            "internalType": "uint256",
-            "name": "timestamp",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
-        "inputs": [],
-        "name": "owner",
-        "outputs": [
-          {
-            "internalType": "address",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function",
-        "constant": true
-      },
-      {
-        "inputs": [
-          {
-            "internalType": "string",
-            "name": "_ipfsHash",
-            "type": "string"
-          },
-          {
-            "internalType": "string",
-            "name": "_fileName",
-            "type": "string"
-          },
-          {
-            "internalType": "uint256",
-            "name": "_fileSize",
-            "type": "uint256"
-          }
-        ],
-        "name": "addFile",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-      }
-    ];
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fileId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fileSize",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "FileAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fileId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fileSize",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "name": "FileDeleted",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "fileCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileExists",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileName",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileSize",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileToId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "name": "fileToOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "files",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "ipfsHash",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "fileName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "fileSize",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_ipfsHash",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "_fileName",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_fileSize",
+          "type": "uint256"
+        }
+      ],
+      "name": "addFile",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ];
     const contract = new web3.eth.Contract(contractABI, contractAddress);
 
     document.addEventListener("DOMContentLoaded", async () => {
@@ -797,14 +797,14 @@
 
         
         outputDiv.innerHTML += `
-                <div id="${blockId}" class="file-detail">
-                    <p>File Name: ${fileName}</p>
-                    <p>IPFS Hash: ${ipfsHash}</p>
-                    <p>File Size: ${fileSizeMB} MB</p>
-                    <p class="timestamp">Timestamp: ${timestamp}</p>
-                    <hr>
-                </div>
-            `;
+        <div div id="${blockId}" class="file-detail">
+        <p>File Name: <a href="#" onclick="openFile('${ipfsHash}')">${fileName}</a></p>
+        <p>IPFS Hash: ${ipfsHash}</p>
+        <p>File Size: ${fileSizeMB} MB</p>
+        <p class="timestamp">Timestamp: ${timestamp}</p>
+        <hr>
+        </div>
+        `;
       }
     }
 
@@ -882,6 +882,12 @@
         reader.readAsDataURL(file);
       }
     }
+
+    function openFile(ipfsHash) {
+    const pinataGatewayToken = "NfZXt4Zb2vvSoBVST7_ISlfco2X696nnoCEt9t3yv4mHACHxiCnHINOvtbX4SlX5";
+    const link = `https://purple-blank-reptile-398.mypinata.cloud/ipfs/${ipfsHash}?pinataGatewayToken=${pinataGatewayToken}`;
+    window.open(link, '_blank');
+}
 
   </script>
 </body>

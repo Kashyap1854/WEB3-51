@@ -215,9 +215,13 @@ body {
 }
 /******************/
 .note-container {
+  position: relative;
+      max-width: 800px;
+      width: 100%;
   text-align: center;
  background-color: rgba(231, 231, 231, 0.815);
   padding: 40px;
+  width: 80%;
   border-radius: 8px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.301);
 }
@@ -241,8 +245,8 @@ body {
 }
 
 .item-content {
-  width: 300px;
-  height: 100px;
+  width: 500px;
+  height: 200px;
   resize: none;
   border: 1px solid #ccc;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.071);
@@ -251,11 +255,10 @@ body {
   padding: 10px;
 }
 
-.sbtn,
-.cbtn {
+.sbtn {
   position: relative;
   top: 30px;
-  left:-280px;
+  left:-300px;
   padding: 12px;
   background-color: #ffffff;
   color: #000000;
@@ -264,8 +267,19 @@ body {
   cursor: pointer;
   font-size: 16px;
 }
+
 .cbtn{
-  margin-left: 10px;
+  margin-left:10px;
+  position: relative;
+  top: 0px;
+  left:-0px;
+  padding: 8px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #274393;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 .sbtn:hover{
   background-color: #1a2c58;
@@ -281,8 +295,10 @@ body {
 
 .saved-notes {
   display: flex;
+  margin-top: 50px;
   flex-wrap: wrap;
-  justify-content: center;
+  font-weight: 1000;
+  text-align: left;
 }
 
 .note {
